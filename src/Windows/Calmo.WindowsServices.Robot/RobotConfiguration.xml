@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <robotConfig name="Calmo Robot Service" executionMilliseconds="5000" logSteps="true" logTextFile="true" textFilePath="C:\RobotService\log" executionTimeoutMinutes="30"></robotConfig>
+  <serviceClass assemblyName="Calmo.Sample.DomainServices.dll" typeFullName="Calmo.Sample.DomainServices.DomainServiceName"></serviceClass>
+</root>

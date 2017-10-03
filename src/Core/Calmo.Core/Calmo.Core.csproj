@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{70460137-42D4-4D75-A18B-300F6A035E86}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Calmo.Core</RootNamespace>
+    <AssemblyName>Calmo.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ArrayExtensions.cs" />
+    <Compile Include="AsyncExtensions.cs" />
+    <Compile Include="CollectionsExtensions.cs" />
+    <Compile Include="Collections\PagedList.cs" />
+    <Compile Include="Collections\PagedListExtensions.cs" />
+    <Compile Include="Configuration\CustomConfigurationCoreExtensions.cs" />
+    <Compile Include="Emoji.cs" />
+    <Compile Include="ExceptionHandling\DomainException.cs" />
+    <Compile Include="Properties\ConfigurationMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConfigurationMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Configuration\ProxySection.cs" />
+    <Compile Include="ConversionExtensions.cs" />
+    <Compile Include="CustomConfiguration.cs" />
+    <Compile Include="Data\TransactionScope.cs" />
+    <Compile Include="DateTimeExtensions.cs" />
+    <Compile Include="DictionaryExtensions.cs" />
+    <Compile Include="DrawingExtensions.cs" />
+    <Compile Include="EnumExtensions.cs" />
+    <Compile Include="Enum\DataKeyAttribute.cs" />
+    <Compile Include="ExceptionHandling\ExceptionExtension.cs" />
+    <Compile Include="ExceptionHandling\Throw.cs" />
+    <Compile Include="FileEx.cs" />
+    <Compile Include="FileExtensions.cs" />
+    <Compile Include="GeoLocalization\GeoPoint.cs" />
+    <Compile Include="ImageExtensions.cs" />
+    <Compile Include="LinqExtensions.cs" />
+    <Compile Include="MathExtensions.cs" />
+    <Compile Include="NumberExtensions.cs" />
+    <Compile Include="ObjectExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\Captcha.cs" />
+    <Compile Include="Security\CryptoExtensions.cs" />
+    <Compile Include="Serialization\SerializationExtensions.cs" />
+    <Compile Include="String\StringFormatExtensions.cs" />
+    <Compile Include="String\StringHandleExtensions.cs" />
+    <Compile Include="String\StringTreatmentExtensions.cs" />
+    <Compile Include="String\HtmlUtility.cs" />
+    <Compile Include="Threading\ThreadStorage.cs" />
+    <Compile Include="Properties\ThrowMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ThrowMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TimeSpanExtensions.cs" />
+    <Compile Include="TypeExtensions.cs" />
+    <Compile Include="Properties\ValidationMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ValidationMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Validator\Documents\DocumentDefinition.cs" />
+    <Compile Include="Validator\Documents\Brazil\BrazilianDocuments.cs" />
+    <Compile Include="Validator\Formats\Brazil\BrazilianFormats.cs" />
+    <Compile Include="Validator\Documents\Brazil\CPFDocumentDefinition.cs" />
+    <Compile Include="Validator\Documents\Brazil\CNPJDocumentDefinition.cs" />
+    <Compile Include="Validator\Formats\Brazil\PhoneFormatDefinition.cs" />
+    <Compile Include="Validator\Formats\Brazil\CNPJFormatDefinition.cs" />
+    <Compile Include="Validator\Formats\Brazil\CEPFormatDefinition.cs" />
+    <Compile Include="Validator\Formats\Brazil\CPFFormatDefinition.cs" />
+    <Compile Include="Validator\Formats\CommonFormatDefinition.cs" />
+    <Compile Include="Validator\Formats\FormatDefinition.cs" />
+    <Compile Include="Validator\Documents\DocumentValidation.cs" />
+    <Compile Include="Validator\Formats\FormatValidation.cs" />
+    <Compile Include="Validator\Formats\US\USFormats.cs" />
+    <Compile Include="Validator\Formats\US\PhoneFormatDefinition.cs" />
+    <Compile Include="Validator\ValidationItem.cs" />
+    <Compile Include="Validator\ValidationContext.cs" />
+    <Compile Include="Validator\ValidationResult.cs" />
+    <Compile Include="Validator\ValidationScope.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\ConfigurationMessages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConfigurationMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ThrowMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ThrowMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ValidationMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ValidationMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /s /y /c $(TargetDir)*.dll $(SolutionDir)Assemblies\</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
