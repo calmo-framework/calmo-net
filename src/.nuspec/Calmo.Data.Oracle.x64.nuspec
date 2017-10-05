@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Calmo.Data.Oracle.x64</id>
-    <version>$version$</version>
+    <version>1.0.0</version>
     <authors>Raphael Nascimento, Acauan Iaizzo, Rodrigo Fortino</authors>
     <owners>calmo-framework community</owners>
     <licenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</licenseUrl>
@@ -13,8 +13,8 @@
     <tags>.NET C# Data Oracle x64</tags>
     <iconUrl></iconUrl>
     <dependencies>
-      <dependency id="Calmo.Core" version="$version$" />
-      <dependency id="Calmo.Data" version="$version$" />
+      <dependency id="Calmo.Core" version="1.0.0" />
+      <dependency id="Calmo.Data" version="1.0.0" />
       <dependency id="odp.net.x64" version="[112.3.20]" />
     </dependencies>
   </metadata>

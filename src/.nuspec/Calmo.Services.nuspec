@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Calmo.Services</id>
-    <version>$version$</version>
+    <version>1.0.0</version>
     <authors>Raphael Nascimento</authors>
     <owners>calmo-framework community</owners>
     <licenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</licenseUrl>
@@ -13,7 +13,7 @@
     <tags>.NET C# Services WCF</tags>
     <iconUrl></iconUrl>
     <dependencies>
-      <dependency id="Calmo.Core" version="$version$" />
+      <dependency id="Calmo.Core" version="1.0.0" />
     </dependencies>
   </metadata>
 </package>

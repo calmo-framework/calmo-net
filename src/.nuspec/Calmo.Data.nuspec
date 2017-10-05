@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Calmo.Data</id>
-    <version>$version$</version>
+    <version>1.0.0</version>
     <authors>Thales Raymond, Raphael Nascimento, Acauan Iaizzo, Rodrigo Fortino e etc</authors>
     <owners>calmo-framework community</owners>
     <licenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</licenseUrl>
@@ -13,7 +13,7 @@
     <tags>.NET C# Data Dapper</tags>
     <iconUrl></iconUrl>
     <dependencies>
-      <dependency id="Calmo.Core" version="$version$" />
+      <dependency id="Calmo.Core" version="1.0.0" />
       <dependency id="Dapper" version="[1.50.2]" />
     </dependencies>
   </metadata>

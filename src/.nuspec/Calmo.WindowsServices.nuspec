@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Calmo.WindowsServices</id>
-    <version>$version$</version>
+    <version>1.0.0</version>
     <authors>Thales Raymond, Raphael Nascimento, Acauan Iaizzo, Rodrigo Fortino e etc</authors>
     <owners>calmo-framework community</owners>
     <licenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</licenseUrl>
