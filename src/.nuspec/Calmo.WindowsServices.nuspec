@@ -8,9 +8,7 @@
     <licenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>calmo-net-windowsServices</description>
-    <releaseNotes></releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>.NET C# windows services</tags>
-    <iconUrl></iconUrl>
   </metadata>
 </package>

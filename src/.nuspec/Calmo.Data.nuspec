@@ -8,10 +8,8 @@
     <licenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>calmo-net-data</description>
-    <releaseNotes></releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>.NET C# Data Dapper</tags>
-    <iconUrl></iconUrl>
     <dependencies>
       <dependency id="Calmo.Core" version="1.0.0" />
       <dependency id="Dapper" version="[1.50.2]" />

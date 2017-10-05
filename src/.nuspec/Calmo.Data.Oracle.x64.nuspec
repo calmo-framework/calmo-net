@@ -8,10 +8,8 @@
     <licenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>calmo-net-data-oracle-x64</description>
-    <releaseNotes></releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>.NET C# Data Oracle x64</tags>
-    <iconUrl></iconUrl>
     <dependencies>
       <dependency id="Calmo.Core" version="1.0.0" />
       <dependency id="Calmo.Data" version="1.0.0" />

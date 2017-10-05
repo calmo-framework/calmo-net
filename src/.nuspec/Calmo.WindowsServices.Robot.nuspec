@@ -8,10 +8,8 @@
     <licenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>calmo-net-windowsServices-robot</description>
-    <releaseNotes></releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>.NET C# windows services robot</tags>
-    <iconUrl></iconUrl>
     <dependencies>
       <dependency id="Calmo.Core" version="1.0.0" />
       <dependency id="Calmo.WindowsServices" version="1.0.0" />
