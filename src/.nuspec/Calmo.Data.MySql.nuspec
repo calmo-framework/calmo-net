@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Calmo.Data.MySql</id>
+    <version>$version$</version>
+    <authors>Raphael Nascimento</authors>
+    <owners>calmo-framework community</owners>
+    <licenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>calmo-net-data-mySql</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>.NET C# Data MySql</tags>
+    <iconUrl></iconUrl>
+    <dependencies>
+      <dependency id="Calmo.Core" version="$version$" />
+      <dependency id="Calmo.Data" version="$version$" />
+      <dependency id="MySql.Data" version="[6.9.9]" />
+    </dependencies>
+  </metadata>
+</package>

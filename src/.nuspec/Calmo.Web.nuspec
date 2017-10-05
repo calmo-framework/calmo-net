@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Calmo.Web</id>
+    <version>$version$</version>
+    <authors>Thales Raymond, Raphael Nascimento, Fúlvio Brigo Pereira, Acauan Iaizzo, Felipe Rugai e etc</authors>
+    <owners>calmo-framework community</owners>
+    <licenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>calmo-net-web</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>.NET C# Web asp.net mvc razor</tags>
+    <iconUrl></iconUrl>
+    <dependencies>
+      <dependency id="Calmo.Core" version="$version$" />
+      <dependency id="ClosedXML" version="[0.87.1]" />
+      <dependency id="DocumentFormat.OpenXml" version="[2.5.0]" />
+      <dependency id="Microsoft.AspNet.Mvc" version="[5.2.3]" />
+      <dependency id="Microsoft.AspNet.Razor" version="[3.2.3]" />
+      <dependency id="Microsoft.AspNet.WebPages" version="[3.2.3]" />
+      <dependency id="Microsoft.Web.Infrastructure" version="[1.0.0]" />
+    </dependencies>
+  </metadata>
+</package>

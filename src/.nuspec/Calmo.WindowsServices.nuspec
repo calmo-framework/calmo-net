@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Calmo.WindowsServices</id>
+    <version>$version$</version>
+    <authors>Thales Raymond, Raphael Nascimento, Acauan Iaizzo, Rodrigo Fortino e etc</authors>
+    <owners>calmo-framework community</owners>
+    <licenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>calmo-net-windowsServices</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>.NET C# windows services</tags>
+    <iconUrl></iconUrl>
+  </metadata>
+</package>

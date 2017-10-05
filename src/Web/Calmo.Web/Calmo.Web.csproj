@@ -66,10 +66,6 @@
     <Folder Include="Mvc\Models\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ReferencedAssemblies\ClosedXML.dll" />
-    <Content Include="ReferencedAssemblies\DocumentFormat.OpenXml.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

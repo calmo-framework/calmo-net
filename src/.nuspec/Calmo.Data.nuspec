@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>Calmo.Data</id>
+    <version>$version$</version>
+    <authors>Thales Raymond, Raphael Nascimento, Acauan Iaizzo, Rodrigo Fortino e etc</authors>
+    <owners>calmo-framework community</owners>
+    <licenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>calmo-net-data</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>.NET C# Data Dapper</tags>
+    <iconUrl></iconUrl>
+    <dependencies>
+      <dependency id="Calmo.Core" version="$version$" />
+      <dependency id="Dapper" version="[1.50.2]" />
+    </dependencies>
+  </metadata>
+</package>
