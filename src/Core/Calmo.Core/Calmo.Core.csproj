@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="ArrayExtensions.cs" />
     <Compile Include="AsyncExtensions.cs" />
+    <Compile Include="AsyncThreadCaller.cs" />
     <Compile Include="CollectionsExtensions.cs" />
     <Compile Include="Collections\PagedList.cs" />
     <Compile Include="Collections\PagedListExtensions.cs" />
