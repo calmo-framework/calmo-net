@@ -18,7 +18,7 @@ namespace Calmo.Data.Forms
             lock (_lockObjectApi)
             {
                 if (_apiSection == null)
-                    _apiSection = new ApiSection(ConfigurationManager.AppSettings);
+                    _apiSection = new ApiSection();
             }
 
             return _apiSection;
