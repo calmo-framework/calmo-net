@@ -66,17 +66,14 @@
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PCLAppConfig, Version=0.2.0.0, Culture=neutral, PublicKeyToken=7dc9bc9afb3fa588, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\PCLAppConfig.0.3.2\lib\Xamarin.iOS\PCLAppConfig.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="PCLAppConfig, Version=0.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\PCLAppConfig.0.3.4\lib\Xamarin.iOS\PCLAppConfig.dll</HintPath>
     </Reference>
-    <Reference Include="PCLAppConfig.FileSystemStream.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\PCLAppConfig.0.3.2\lib\Xamarin.iOS\PCLAppConfig.FileSystemStream.Abstractions.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="PCLAppConfig.FileSystemStream, Version=0.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\PCLAppConfig.0.3.4\lib\Xamarin.iOS\PCLAppConfig.FileSystemStream.dll</HintPath>
     </Reference>
-    <Reference Include="PCLAppConfig.FileSystemStream.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\PCLAppConfig.0.3.2\lib\Xamarin.iOS\PCLAppConfig.FileSystemStream.iOS.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="PCLAppConfig.FileSystemStream.Abstractions, Version=0.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\PCLAppConfig.0.3.4\lib\Xamarin.iOS\PCLAppConfig.FileSystemStream.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="PCLStorage, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\PCLStorage.1.0.2\lib\portable-Xamarin.iOS+Xamarin.Mac\PCLStorage.dll</HintPath>

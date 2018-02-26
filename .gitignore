@@ -202,3 +202,5 @@ FakesAssemblies/
 
 # Assemblies Folder
 **/Assemblies/*
+/src/.vs/calmo.xamarin.framework/v15/Server/sqlite3
+/src/.vs/calmo.xamarin.framework/v15/sqlite3/db.lock
