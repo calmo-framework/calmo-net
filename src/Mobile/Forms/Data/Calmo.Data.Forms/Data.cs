@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 
 namespace Calmo.Data.Forms
 {
@@ -13,6 +14,9 @@ namespace Calmo.Data.Forms
 
         public static void Init()
         {
+            if (DataInitializer == null)
+                throw new Exception("Não foi possível acessar o DataInitializer. Habilite a opção 'Link SDK assemblies only' e tente novamente.");
+
             DataInitializer.InitConfig();
         }
 
