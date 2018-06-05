@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Calmo.Data.Oracle</id>
+    <version>1.0.0</version>
+    <description>Dapper-based fluent library to simplify Oracle x86 data access.</description>
+    <tags>.net utility helpers Data Oracle x86</tags>
+
+    <dependencies>
+      <dependency id="Calmo.Core" version="1.0.0" />
+      <dependency id="Calmo.Data" version="1.0.0" />
+      <dependency id="odp.net.x86" version="[112.3.20]" />
+    </dependencies>
+
+    <authors>Calmô! Community</authors>
+    <owners>Calmô! Community</owners>
+    <copyright>Copyright © Calmô! 2018</copyright>
+    <licenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/calmo-framework/calmo-net/</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/calmo-framework/calmo-net/master/art/icon.png</iconUrl>
+
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+
+    <!--
+      <releaseNotes>Bug fixes and performance improvements</releaseNotes>
+    -->
+  </metadata>
+</package>

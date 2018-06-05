@@ -47,25 +47,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmo.Tests", "Tests\Calmo.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmo.Data.Sharepoint", "Data\Calmo.Data.Sharepoint\Calmo.Data.Sharepoint.csproj", "{DF7F3CD1-CB90-4DA8-A7A0-841AD52F22F3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuspec", ".nuspec", "{EEB21B46-63C8-49EF-B5C6-A7CAD2C09134}"
-	ProjectSection(SolutionItems) = preProject
-		.nuspec\build.bat = .nuspec\build.bat
-		.nuspec\Calmo.Core.nuspec = .nuspec\Calmo.Core.nuspec
-		.nuspec\Calmo.Data.ActiveDirectory.nuspec = .nuspec\Calmo.Data.ActiveDirectory.nuspec
-		.nuspec\Calmo.Data.Api.nuspec = .nuspec\Calmo.Data.Api.nuspec
-		.nuspec\Calmo.Data.MySql.nuspec = .nuspec\Calmo.Data.MySql.nuspec
-		.nuspec\Calmo.Data.nuspec = .nuspec\Calmo.Data.nuspec
-		.nuspec\Calmo.Data.Oracle.nuspec = .nuspec\Calmo.Data.Oracle.nuspec
-		.nuspec\Calmo.Data.Oracle.x64.nuspec = .nuspec\Calmo.Data.Oracle.x64.nuspec
-		.nuspec\Calmo.Data.Sharepoint.nuspec = .nuspec\Calmo.Data.Sharepoint.nuspec
-		.nuspec\Calmo.Data.SQLServer.nuspec = .nuspec\Calmo.Data.SQLServer.nuspec
-		.nuspec\Calmo.Net.nuspec = .nuspec\Calmo.Net.nuspec
-		.nuspec\Calmo.Services.nuspec = .nuspec\Calmo.Services.nuspec
-		.nuspec\Calmo.Web.nuspec = .nuspec\Calmo.Web.nuspec
-		.nuspec\Calmo.WindowsServices.nuspec = .nuspec\Calmo.WindowsServices.nuspec
-		.nuspec\Calmo.WindowsServices.Robot.nuspec = .nuspec\Calmo.WindowsServices.Robot.nuspec
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

@@ -7,6 +7,7 @@
 
 # Application host config
 .vs/config/applicationhost.config
+**/.vs
 
 # User-specific files
 *.suo
@@ -20,6 +21,8 @@ Resource.designer.cs
 
 # Xamarin Components
 Components/
+**/sqlite3
+storage.ide
 
 # Build results
 [Dd]ebug/
@@ -173,6 +176,7 @@ ClientBin/
 *.pfx
 *.publishsettings
 node_modules/
+*.dtbcache
 
 # RIA/Silverlight projects
 Generated_Code/

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Calmo.Data.SQLServer</id>
+    <version>1.0.0</version>
+    <description>Dapper-based fluent library to simplify SQL Server data access.</description>
+    <tags>.net utility helpers Data SQL Server</tags>
+
+    <dependencies>
+      <dependency id="Calmo.Core" version="1.0.0" />
+      <dependency id="Calmo.Data" version="1.0.0" />
+    </dependencies>
+
+    <authors>Calmô! Community</authors>
+    <owners>Calmô! Community</owners>
+    <copyright>Copyright © Calmô! 2018</copyright>
+    <licenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/calmo-framework/calmo-net/</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/calmo-framework/calmo-net/master/art/icon.png</iconUrl>
+
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+
+    <!--
+      <releaseNotes>Bug fixes and performance improvements</releaseNotes>
+    -->
+  </metadata>
+</package>

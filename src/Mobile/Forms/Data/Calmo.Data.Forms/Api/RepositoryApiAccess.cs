@@ -16,6 +16,7 @@ namespace Calmo.Data.Forms
     {
         private object _queryParams = null;
         private string _bearerToken = null;
+        private IDictionary<string, string> _headers = null;
 
         internal RepositoryApiAccess() { }
 
@@ -28,6 +29,12 @@ namespace Calmo.Data.Forms
         public RepositoryApiAccess UseBearer(string bearerToken)
         {
             _bearerToken = bearerToken;
+            return this;
+        }
+
+        public RepositoryApiAccess WithHeaders(IDictionary<string, string> headers)
+        {
+            _headers = headers;
             return this;
         }
 
@@ -208,6 +215,12 @@ namespace Calmo.Data.Forms
             var headers = CustomConfiguration.Settings.Api().Headers;
             foreach (var header in headers)
                 client.WithHeader(header.Key, header.Value);
+
+            if (_headers.HasItems())
+            {
+                foreach (var header in _headers)
+                    client.WithHeader(header.Key, header.Value);
+            }
 
             if (ApiConfiguration.SerializerSettings != null)
                 client.Settings.JsonSerializer = new NewtonsoftJsonSerializer(ApiConfiguration.SerializerSettings);

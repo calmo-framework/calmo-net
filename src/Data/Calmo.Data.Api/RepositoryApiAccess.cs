@@ -156,7 +156,7 @@ namespace Calmo.Data.Api
 
         #region Private methods
 
-        private IFlurlClient Client(string urlPath, object queryParams, string bearerToken)
+        private IFlurlRequest Client(string urlPath, object queryParams, string bearerToken)
         {
             var urlHasBase = false;
             if (!String.IsNullOrWhiteSpace(urlPath))
