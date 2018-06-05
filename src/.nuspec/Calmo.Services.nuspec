@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Calmo.Services</id>
+    <version>1.0.0</version>
+    <authors>Raphael Nascimento</authors>
+    <owners>calmo-framework community</owners>
+    <licenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>calmo-net-services</description>
+    <copyright>Copyright 2017</copyright>
+    <tags>.NET C# Services WCF</tags>
+    <dependencies>
+      <dependency id="Calmo.Core" version="1.0.0" />
+    </dependencies>
+  </metadata>
+</package>

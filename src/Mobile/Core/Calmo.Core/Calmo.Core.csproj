@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{912506A8-6689-4732-A171-D46C02F8BF50}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Calmo.Core</RootNamespace>
+    <AssemblyName>Calmo.Core</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;__MOBILE__</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;__MOBILE__</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug iOS|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug iOS\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Droid|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug Droid\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Api|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug Api\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;__MOBILE__</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <EmbeddedResource Include="Properties\ThrowMessages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ThrowMessages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\..\Core\Calmo.Core\ArrayExtensions.cs">
+      <Link>ArrayExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\AsyncExtensions.cs">
+      <Link>AsyncExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\CollectionsExtensions.cs">
+      <Link>CollectionsExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Collections\PagedList.cs">
+      <Link>Collections\PagedList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Collections\PagedListExtensions.cs">
+      <Link>Collections\PagedListExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\ConversionExtensions.cs">
+      <Link>ConversionExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\CustomConfiguration.cs">
+      <Link>CustomConfiguration.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\DateTimeExtensions.cs">
+      <Link>DateTimeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\DictionaryExtensions.cs">
+      <Link>DictionaryExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Emoji.cs">
+      <Link>Emoji.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\EnumExtensions.cs">
+      <Link>EnumExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Enum\DataKeyAttribute.cs">
+      <Link>Enum\DataKeyAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\ExceptionHandling\DomainException.cs">
+      <Link>ExceptionHandling\DomainException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\ExceptionHandling\ExceptionExtension.cs">
+      <Link>ExceptionHandling\ExceptionExtension.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\ExceptionHandling\Throw.cs">
+      <Link>ExceptionHandling\Throw.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\FileExtensions.cs">
+      <Link>FileExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\GeoLocalization\GeoPoint.cs">
+      <Link>GeoLocalization\GeoPoint.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\LinqExtensions.cs">
+      <Link>LinqExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\MathExtensions.cs">
+      <Link>MathExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\NumberExtensions.cs">
+      <Link>NumberExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\ObjectExtensions.cs">
+      <Link>ObjectExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Serialization\SerializationExtensions.cs">
+      <Link>Serialization\SerializationExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\String\HtmlUtility.cs">
+      <Link>String\HtmlUtility.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\String\StringFormatExtensions.cs">
+      <Link>String\StringFormatExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\String\StringHandleExtensions.cs">
+      <Link>String\StringHandleExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\String\StringTreatmentExtensions.cs">
+      <Link>String\StringTreatmentExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\TimeSpanExtensions.cs">
+      <Link>TimeSpanExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\TypeExtensions.cs">
+      <Link>TypeExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Documents\Brazil\BrazilianDocuments.cs">
+      <Link>Validator\Documents\Brazil\BrazilianDocuments.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Documents\Brazil\CNPJDocumentDefinition.cs">
+      <Link>Validator\Documents\Brazil\CNPJDocumentDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Documents\Brazil\CPFDocumentDefinition.cs">
+      <Link>Validator\Documents\Brazil\CPFDocumentDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Documents\DocumentDefinition.cs">
+      <Link>Validator\Documents\DocumentDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Documents\DocumentValidation.cs">
+      <Link>Validator\Documents\DocumentValidation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\Brazil\BrazilianFormats.cs">
+      <Link>Validator\Formats\Brazil\BrazilianFormats.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\Brazil\CEPFormatDefinition.cs">
+      <Link>Validator\Formats\Brazil\CEPFormatDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\Brazil\CNPJFormatDefinition.cs">
+      <Link>Validator\Formats\Brazil\CNPJFormatDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\Brazil\CPFFormatDefinition.cs">
+      <Link>Validator\Formats\Brazil\CPFFormatDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\Brazil\PhoneFormatDefinition.cs">
+      <Link>Validator\Formats\Brazil\PhoneFormatDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\CommonFormatDefinition.cs">
+      <Link>Validator\Formats\CommonFormatDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\FormatDefinition.cs">
+      <Link>Validator\Formats\FormatDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\FormatValidation.cs">
+      <Link>Validator\Formats\FormatValidation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\US\PhoneFormatDefinition.cs">
+      <Link>Validator\Formats\US\PhoneFormatDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\US\USFormats.cs">
+      <Link>Validator\Formats\US\USFormats.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\ValidationContext.cs">
+      <Link>Validator\ValidationContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\ValidationItem.cs">
+      <Link>Validator\ValidationItem.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\ValidationResult.cs">
+      <Link>Validator\ValidationResult.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\ValidationScope.cs">
+      <Link>Validator\ValidationScope.cs</Link>
+    </Compile>
+    <Compile Include="Enum\DescriptionAttibute.cs" />
+    <Compile Include="FontAwesomeIconsChar.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\ThrowMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ThrowMessages.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /s /y /c $(TargetDir)*.dll $(SolutionDir)Assemblies\Mobile\</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

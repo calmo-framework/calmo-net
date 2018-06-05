@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Calmo.Data.ActiveDirectory</id>
+    <version>1.0.0</version>
+    <authors>Raphael Nascimento</authors>
+    <owners>calmo-framework community</owners>
+    <licenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>calmo-net-data-activeDirectory</description>
+    <copyright>Copyright 2017</copyright>
+    <tags>.NET C# ActiveDirectory AD</tags>
+    <dependencies>
+      <dependency id="Calmo.Core" version="1.0.0" />
+      <dependency id="Calmo.Data" version="1.0.0" />
+    </dependencies>
+  </metadata>
+</package>

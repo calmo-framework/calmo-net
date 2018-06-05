@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Assembly_AssemblyNotFoundErrorMessage" xml:space="preserve">
+    <value>Assembly {0} : O assembly não foi encontrado.</value>
+  </data>
+  <data name="Assembly_Loaded" xml:space="preserve">
+    <value>Assembly {0} : Assembly carregado.</value>
+  </data>
+  <data name="Assembly_Loading" xml:space="preserve">
+    <value>Assembly {0} : Carregando o assembly.</value>
+  </data>
+  <data name="Assembly_Locating" xml:space="preserve">
+    <value>Assembly {0} : Localizando o assembly.</value>
+  </data>
+  <data name="Assembly_TypeNotFoundErrorMessage" xml:space="preserve">
+    <value>Assembly {0} : A classe {1} não foi encontrada no assembly.</value>
+  </data>
+  <data name="Assembly_VerifyingClassExists" xml:space="preserve">
+    <value>Assembly {0} : Verificando se a classe {1} pertence ao assembly.</value>
+  </data>
+  <data name="Class_EnumeratingProcesses" xml:space="preserve">
+    <value>Classe {0} : Iniciando varredura de processos.</value>
+  </data>
+  <data name="Class_Executing" xml:space="preserve">
+    <value>Classe {0} : Execução iniciada.</value>
+  </data>
+  <data name="Class_ExecutionFinalized" xml:space="preserve">
+    <value>Classe {0} : Execução finalizada.</value>
+  </data>
+  <data name="Class_InitializingProcessment" xml:space="preserve">
+    <value>Classe {0} : Iniciando processamento da classe.</value>
+  </data>
+  <data name="Class_Instantiated" xml:space="preserve">
+    <value>Classe {0} : Classe instanciada.</value>
+  </data>
+  <data name="Class_Instantiation" xml:space="preserve">
+    <value>Classe {0} : Instanciando classe.</value>
+  </data>
+  <data name="Class_NotImplementErrorMessage" xml:space="preserve">
+    <value>Classe {0} : A classe não implementa a interface {1}.\nPara uma classe ser executada pelo Resource Robot Service ela deve implementar essa interface.</value>
+  </data>
+  <data name="Class_RequestingProcesses" xml:space="preserve">
+    <value>Classe {0} : Solicitando processos a serem executados.</value>
+  </data>
+  <data name="Class_VerifyingInterfaceImplementation" xml:space="preserve">
+    <value>Classe {0} : Verificando se a classe implementa a interface IRobotServiceClass.</value>
+  </data>
+  <data name="ExecutionTimeNotFoundErrorMessage" xml:space="preserve">
+    <value>Não foram informados a hora (ExecuteTime) ou o intervalo (ExecuteInterval) de execução do processo {0} e o mesmo não pode ser executado.</value>
+  </data>
+  <data name="InvalidTime" xml:space="preserve">
+    <value>A hora informada não está no formato correto. O formato deve ser 'hh:MM:ss', 'hh:MM' ou 'hh'.</value>
+  </data>
+  <data name="ProcessClassNotFoundErrorMessage" xml:space="preserve">
+    <value>A classe a ser processada não pode ser nula.</value>
+  </data>
+  <data name="Process_ExecutingAsyncProcess" xml:space="preserve">
+    <value>Processo {0} : Executando o processo de forma assíncrona.</value>
+  </data>
+  <data name="Process_ExecutingSyncProcess" xml:space="preserve">
+    <value>Processo {0} : Executando o processo de forma síncrona.</value>
+  </data>
+  <data name="Process_ExecutionFinalized" xml:space="preserve">
+    <value>Processo {0} : Execução do processo finalizada.</value>
+  </data>
+  <data name="Process_ManagingExecutionStatus" xml:space="preserve">
+    <value>Processo {0} : Tratando status de execução do processo.</value>
+  </data>
+  <data name="Process_ManagingPostExecutionStatus" xml:space="preserve">
+    <value>Processo {0} : Tratando status de pós execução do processo.</value>
+  </data>
+  <data name="Process_Processing" xml:space="preserve">
+    <value>Processo {0} : Iniciando processamento.</value>
+  </data>
+  <data name="Process_ValidatingExecution" xml:space="preserve">
+    <value>Processo {0} : Validando o processo para execução.</value>
+  </data>
+  <data name="Process_ValidatingExecutionTimeInterval" xml:space="preserve">
+    <value>Processo {0} : Validando hora ou intervalo de execução.</value>
+  </data>
+  <data name="Process_ValidatingStatus" xml:space="preserve">
+    <value>Processo {0} : Validando status de execução.</value>
+  </data>
+  <data name="Process_VerifyingExecution" xml:space="preserve">
+    <value>Processo {0} : Verificando se o processo é para ser executado ou não.</value>
+  </data>
+</root>
