@@ -2,13 +2,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>Calmo.Data.ActiveDirectory</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <description>Fluent library to simplify Active Directory data access.</description>
     <tags>.net utility helpers AD Active Directory</tags>
 
     <dependencies>
-      <dependency id="Calmo.Core" version="1.0.0" />
-      <dependency id="Calmo.Data" version="1.0.0" />
+      <dependency id="Calmo.Core" version="1.0.1" />
+      <dependency id="Calmo.Data" version="1.0.1" />
     </dependencies>
 
     <authors>Calmô! Community</authors>
@@ -20,8 +20,6 @@
 
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
 
-    <!--
-      <releaseNotes>Bug fixes and performance improvements</releaseNotes>
-    -->
+    <releaseNotes>Change .Net Framework to 4.6.2</releaseNotes>
   </metadata>
 </package>

@@ -2,13 +2,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>Calmo.Data.Sharepoint</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <description>Dapper-based fluent library to simplify Sharepoint Client Object Model data access.</description>
     <tags>.net utility helpers Data Sharepoint Client Object Model</tags>
 
     <dependencies>
-      <dependency id="Calmo.Core" version="1.0.0" />
-      <dependency id="Calmo.Data" version="1.0.0" />
+      <dependency id="Calmo.Core" version="1.0.1" />
+      <dependency id="Calmo.Data" version="1.0.1" />
     </dependencies>
 
     <authors>Calmô! Community</authors>
@@ -20,9 +20,7 @@
 
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
 
-    <!--
-      <releaseNotes>Bug fixes and performance improvements</releaseNotes>
-    -->
+    <releaseNotes>Change .Net Framework to 4.6.2</releaseNotes>
   </metadata>
   <files>
     <file src="ReferencedAssemblies\Microsoft.SharePoint.dll" target="lib\net40\" />
