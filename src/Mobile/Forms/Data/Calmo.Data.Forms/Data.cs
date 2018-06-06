@@ -7,6 +7,7 @@ namespace Calmo.Data.Forms
     public static class Data
     {
         private static IDataInitializer _dataInitializer;
+        private static bool _isInitialized;
 
         public static ApiConfiguration Api()
         {
@@ -20,7 +21,11 @@ namespace Calmo.Data.Forms
 
             DataInitializer.InitConfig();*/
 
+            if (_isInitialized)
+                return;
+
             ConfigurationManager.Initialise(PCLAppConfig.FileSystemStream.PortableStream.Current);
+            _isInitialized = true;
         }
 
         public static IDataInitializer DataInitializer
