@@ -1,4 +1,5 @@
 ﻿using System;
+using PCLAppConfig;
 using Xamarin.Forms;
 
 namespace Calmo.Data.Forms
@@ -14,17 +15,22 @@ namespace Calmo.Data.Forms
 
         public static void Init()
         {
-            if (DataInitializer == null)
+            /*if (DataInitializer == null)
                 throw new Exception("Não foi possível acessar o DataInitializer. Habilite a opção 'Link SDK assemblies only' e tente novamente.");
 
-            DataInitializer.InitConfig();
+            DataInitializer.InitConfig();*/
+
+            ConfigurationManager.Initialise(PCLAppConfig.FileSystemStream.PortableStream.Current);
         }
 
         public static IDataInitializer DataInitializer
         {
             get
             {
-                return _dataInitializer ?? (_dataInitializer = DependencyService.Get<IDataInitializer>());
+                if (_dataInitializer == null)
+                    _dataInitializer = DependencyService.Get<IDataInitializer>();
+
+                return _dataInitializer;
             }
         }
     }

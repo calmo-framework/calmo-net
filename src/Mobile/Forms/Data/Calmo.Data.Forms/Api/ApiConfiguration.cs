@@ -30,7 +30,7 @@ namespace Calmo.Data.Forms
 
         public void Init()
         {
-            this.DataInitializer.InitConfig();
+            //this.DataInitializer.InitConfig();
         }
     }
 }
