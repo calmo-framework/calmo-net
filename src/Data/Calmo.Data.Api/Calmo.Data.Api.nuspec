@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>Calmo.Data.Api</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <description>Flurl-based fluent library to simplify API data access.</description>
     <tags>.net utility helpers API Flurl</tags>
 
