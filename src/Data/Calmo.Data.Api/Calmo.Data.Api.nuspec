@@ -2,13 +2,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>Calmo.Data.Api</id>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <description>Flurl-based fluent library to simplify API data access.</description>
     <tags>.net utility helpers API Flurl</tags>
 
     <dependencies>
-      <dependency id="Calmo.Core" version="1.0.1" />
-      <dependency id="Calmo.Data" version="1.0.1" />
+      <dependency id="Calmo.Core" version="1.0.3" />
+      <dependency id="Calmo.Data" version="1.0.3" />
       <dependency id="Flurl" version="[2.7.1]" />
       <dependency id="Flurl.Http" version="[2.3.1]" />
       <dependency id="Newtonsoft.Json" version="[11.0.2]" />
@@ -25,4 +25,8 @@
 
     <releaseNotes>Change .Net Framework to 4.6.2</releaseNotes>
   </metadata>
+
+  <files>
+    <file src="Calmo.Data.Api.dll" target="lib\net46\" />
+  </files>
 </package>

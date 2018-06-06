@@ -2,7 +2,7 @@
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\..\packages\NuGet.Packer.1.2.10\build\NuGet.Packer.props" Condition="Exists('..\..\packages\NuGet.Packer.1.2.10\build\NuGet.Packer.props')" />
   <PropertyGroup>
-    <PatchVersion>1</PatchVersion>
+    <PatchVersion>2</PatchVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
