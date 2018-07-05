@@ -8,48 +8,10 @@ using Calmo.Data.ActiveDirectory.Properties;
 
 namespace Calmo.Data.ActiveDirectory
 {
-    internal enum ActiveDirectoryObjectType
-    {
-        User
-    }
-
-    public static class RepositoryDataAccessExtensions
-    {
-        public static ActiveDirectoryDataAccessConfig ActiveDirectory(this RepositoryDataAccess data)
-        {
-            return new ActiveDirectoryDataAccessConfig();
-        }
-    }
-
-    public class ActiveDirectoryDataAccessConfig
-    {
-        public ActiveDirectoryDataAccessQuery Users()
-        {
-            return new ActiveDirectoryDataAccessQuery(ActiveDirectoryObjectType.User);
-        }
-    }
-
-    public class ActiveDirectoryDataAccessQuery
-    {
-        private readonly ActiveDirectoryObjectType _activeDirectoryObjectType;
-        private object _parameters;
-
-        internal ActiveDirectoryDataAccessQuery(ActiveDirectoryObjectType activeDirectoryObjectType)
-        {
-            _activeDirectoryObjectType = activeDirectoryObjectType;
-        }
-
-        public ActiveDirectoryDataAccess WithParameters(object parameters)
-        {
-            _parameters = parameters;
-            return new ActiveDirectoryDataAccess(_activeDirectoryObjectType, _parameters);
-        }
-    }
-
     public class ActiveDirectoryDataAccess
     {
-        private ActiveDirectoryObjectType _activeDirectoryObjectType;
-        private object _parameters;
+        private readonly ActiveDirectoryObjectType _activeDirectoryObjectType;
+        private readonly object _parameters;
         private bool _checkAll = true;
 
         internal ActiveDirectoryDataAccess(ActiveDirectoryObjectType activeDirectoryObjectType, object parameters)
@@ -151,7 +113,6 @@ namespace Calmo.Data.ActiveDirectory
                 searcher.SearchRoot = new DirectoryEntry(connectionString,
                                                          CustomConfiguration.Settings.ActiveDirectoryData().UserName,
                                                          CustomConfiguration.Settings.ActiveDirectoryData().Password);
-                //"resource_brsp\\webmotors.tv", "resource@123");
             }
             else
             {

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Calmo.Data;
 using Calmo.Data.ActiveDirectory;
@@ -18,8 +19,7 @@ namespace Calmo.Tests.Data
         public void ValidateModelList()
         {
             var repository = new ModelRepository();
-            repository.ListSQLServer();
-            Assert.IsTrue(true);
+            
         }
     }
 
@@ -63,6 +63,20 @@ namespace Calmo.Tests.Data
                 .Users()
                 .WithParameters(null)
                 .List();
+        }
+
+        public bool ValidateAD(string login, out bool isLockedOut)
+        {
+            return this.Data.ActiveDirectory()
+                .User()
+                .Validate(login, out isLockedOut);
+        }
+
+        public bool AuthenticateAD(string login, string password)
+        {
+            return this.Data.ActiveDirectory()
+                .User()
+                .Authenticate(login, password);
         }
 
         public IEnumerable<Model> ListSharepoint()
