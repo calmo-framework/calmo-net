@@ -178,6 +178,11 @@ namespace System.Collections.Generic
             return value != null && value.Any();
         }
 
+        public static IEnumerable<T> EmptyIfNull<T>(this IEnumerable<T> enumerable)
+        {
+            return enumerable ?? Enumerable.Empty<T>();
+        }
+
         public static bool IsFirst<T>(this IEnumerable<T> source, int index)
         {
             if (!source.HasItems())
