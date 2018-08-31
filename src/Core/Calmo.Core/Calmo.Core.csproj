@@ -3,7 +3,7 @@
   <Import Project="..\..\packages\NuGet.Packer.1.2.10\build\NuGet.Packer.props" Condition="Exists('..\..\packages\NuGet.Packer.1.2.10\build\NuGet.Packer.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <PatchVersion>3</PatchVersion>
+    <PatchVersion>4</PatchVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -55,6 +55,9 @@
     <Compile Include="ArrayExtensions.cs" />
     <Compile Include="AsyncExtensions.cs" />
     <Compile Include="AsyncThreadCaller.cs" />
+    <Compile Include="Automation\RobotProcess.cs" />
+    <Compile Include="Automation\RobotProcessExecutionType.cs" />
+    <Compile Include="Automation\RobotProcessStatus.cs" />
     <Compile Include="CollectionsExtensions.cs" />
     <Compile Include="Collections\PagedList.cs" />
     <Compile Include="Collections\PagedListExtensions.cs" />
