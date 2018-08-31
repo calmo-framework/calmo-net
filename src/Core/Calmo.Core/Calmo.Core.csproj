@@ -3,7 +3,7 @@
   <Import Project="..\..\packages\NuGet.Packer.1.2.10\build\NuGet.Packer.props" Condition="Exists('..\..\packages\NuGet.Packer.1.2.10\build\NuGet.Packer.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <PatchVersion>4</PatchVersion>
+    <PatchVersion>5</PatchVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -44,8 +44,6 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
@@ -64,6 +62,8 @@
     <Compile Include="Configuration\CustomConfigurationCoreExtensions.cs" />
     <Compile Include="Emoji.cs" />
     <Compile Include="ExceptionHandling\DomainException.cs" />
+    <Compile Include="Net\Mail\MailSender.cs" />
+    <Compile Include="Net\NetworkHelper.cs" />
     <Compile Include="Properties\ConfigurationMessages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
