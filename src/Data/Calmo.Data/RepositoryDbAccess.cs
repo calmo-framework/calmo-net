@@ -126,7 +126,7 @@ namespace Calmo.Data
 
         #region List
 
-        protected IEnumerable<dynamic> List(string sql)
+        public IEnumerable<dynamic> List(string sql)
         {
             Throw.IfArgumentNullOrEmpty(sql, nameof(sql));
 
