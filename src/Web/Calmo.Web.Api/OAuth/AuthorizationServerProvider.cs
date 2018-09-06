@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Calmo.Core.ExceptionHandling;
 using Microsoft.Owin.Security.OAuth;
 
 namespace Calmo.Web.Api.OAuth
@@ -47,10 +44,7 @@ namespace Calmo.Web.Api.OAuth
 
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
-            await Task.Run(() =>
-            {
-                context.Validated();
-            });
+            await Task.Run(() => { context.Validated(); });
         }
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
@@ -79,7 +73,12 @@ namespace Calmo.Web.Api.OAuth
                     foreach (var property in this._config._tokenDataProperties)
                     {
                         var propertyValue = property.GetValue(_authenticator);
-                        identity.AddClaim(new Claim(property.Name.ToCamelCaseWord(), propertyValue?.ToString() ?? string.Empty));
+
+                        var claimName = property.Name.ToCamelCaseWord();
+                        var claimValue = propertyValue?.ToString() ?? string.Empty;
+
+                        var claim = new Claim(claimName, claimValue);
+                        identity.AddClaim(claim);
                     }
                 }
 
@@ -87,6 +86,8 @@ namespace Calmo.Web.Api.OAuth
             }
             catch (Exception ex)
             {
+                this._config.OnGrantAccessExceptionEvent(new OnGrantAccessExceptionEventArgs(ex));
+
                 context.SetError("internal_server_error","Internal Server Error. Please contact the administrator.");
             }
         }

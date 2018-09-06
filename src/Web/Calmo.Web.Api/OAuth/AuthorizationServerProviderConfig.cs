@@ -10,6 +10,14 @@ namespace Calmo.Web.Api.OAuth
     {
         internal List<PropertyInfo> _tokenDataProperties;
 
+        public delegate void OnGrantAccessExceptionEventHandler(OnGrantAccessExceptionEventArgs e);
+        internal event OnGrantAccessExceptionEventHandler GrantAccessExceptionEvent;
+
+        internal void OnGrantAccessExceptionEvent(OnGrantAccessExceptionEventArgs e)
+        {
+            GrantAccessExceptionEvent?.Invoke(e);
+        }
+
         public AuthorizationServerProviderConfig<T> Use<TProperty>(Expression<Func<T, TProperty>> property)
         {
             if (_tokenDataProperties == null)
@@ -19,6 +27,13 @@ namespace Calmo.Web.Api.OAuth
 
             if (_tokenDataProperties.All(p => p.Name != propertyInfo.Name))
                 _tokenDataProperties.Add(this.GetPropertyInfo(property));
+
+            return this;
+        }
+
+        public AuthorizationServerProviderConfig<T> OnError(OnGrantAccessExceptionEventHandler onErrorEventHandler)
+        {
+            GrantAccessExceptionEvent += onErrorEventHandler;
 
             return this;
         }
