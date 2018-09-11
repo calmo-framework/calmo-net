@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace Calmo.Web.Api.OAuth
             this._config = new AuthorizationServerProviderConfig<T>();
         }
 
-        public AuthorizationServerProviderConfig<T> TokenData()
+        public AuthorizationServerProviderConfig<T> Configure()
         {
             return _config;
         }
@@ -29,9 +30,9 @@ namespace Calmo.Web.Api.OAuth
                 context.AdditionalResponseParameters.Add(property.Key, property.Value);
             }
 
-            if (this._config._tokenDataProperties != null)
+            if (this._config.TokenDataConfig.Properties != null)
             {
-                foreach (var property in this._config._tokenDataProperties)
+                foreach (var property in this._config.TokenDataConfig.Properties)
                 {
                     var propertyName = property.Name.ToCamelCaseWord();
                     var claim = context.Identity.Claims.FirstOrDefault(x => x.Type == propertyName);
@@ -44,6 +45,7 @@ namespace Calmo.Web.Api.OAuth
 
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
+            
             await Task.Run(() => { context.Validated(); });
         }
 
@@ -51,7 +53,10 @@ namespace Calmo.Web.Api.OAuth
         {
             try
             {
-                context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
+                context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", !this._config.AllowedOrigins.HasItems() ? new[] { "*" } : this._config.AllowedOrigins);
+
+                if (this._config.AllowCredentials)
+                    context.OwinContext.Response.Headers.Add("Access-Control-Allow-Credentials", new[] { "true" });
 
                 if (String.IsNullOrWhiteSpace(context.UserName) || String.IsNullOrWhiteSpace(context.Password))
                 {
@@ -68,9 +73,9 @@ namespace Calmo.Web.Api.OAuth
 
                 var identity = new ClaimsIdentity(context.Options.AuthenticationType);
 
-                if (this._config._tokenDataProperties != null)
+                if (this._config.TokenDataConfig.Properties != null)
                 {
-                    foreach (var property in this._config._tokenDataProperties)
+                    foreach (var property in this._config.TokenDataConfig.Properties)
                     {
                         var propertyValue = property.GetValue(_authenticator);
 

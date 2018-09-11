@@ -6,54 +6,46 @@ using System.Reflection;
 
 namespace Calmo.Web.Api.OAuth
 {
+    public delegate void OnGrantAccessExceptionEventHandler(OnGrantAccessExceptionEventArgs e);
+
     public class AuthorizationServerProviderConfig<T>
     {
-        internal List<PropertyInfo> _tokenDataProperties;
+        internal TokenDataConfig<T> TokenDataConfig { get; private set; }
+        internal string[] AllowedOrigins { get; private set; }
+        internal bool AllowCredentials { get; private set; }
 
-        public delegate void OnGrantAccessExceptionEventHandler(OnGrantAccessExceptionEventArgs e);
-        internal event OnGrantAccessExceptionEventHandler GrantAccessExceptionEvent;
-
+        private event OnGrantAccessExceptionEventHandler _grantAccessExceptionEvent;
         internal void OnGrantAccessExceptionEvent(OnGrantAccessExceptionEventArgs e)
         {
-            GrantAccessExceptionEvent?.Invoke(e);
-        }
-
-        public AuthorizationServerProviderConfig<T> Use<TProperty>(Expression<Func<T, TProperty>> property)
-        {
-            if (_tokenDataProperties == null)
-                _tokenDataProperties = new List<PropertyInfo>();
-
-            var propertyInfo = this.GetPropertyInfo(property);
-
-            if (_tokenDataProperties.All(p => p.Name != propertyInfo.Name))
-                _tokenDataProperties.Add(this.GetPropertyInfo(property));
-
-            return this;
+            _grantAccessExceptionEvent?.Invoke(e);
         }
 
         public AuthorizationServerProviderConfig<T> OnError(OnGrantAccessExceptionEventHandler onErrorEventHandler)
         {
-            GrantAccessExceptionEvent += onErrorEventHandler;
+            _grantAccessExceptionEvent += onErrorEventHandler;
 
             return this;
         }
 
-        private PropertyInfo GetPropertyInfo<TSource, TProperty>(Expression<Func<TSource, TProperty>> propertyLambda)
+        public AuthorizationServerProviderConfig<T> TokenData(Func<TokenDataConfig<T>, TokenDataConfig<T>> func)
         {
-            var type = typeof(TSource);
+            this.TokenDataConfig = func.Invoke(this.TokenDataConfig ?? new TokenDataConfig<T>());
 
-            var member = propertyLambda.Body as MemberExpression;
-            if (member == null)
-                throw new ArgumentException($"Expression '{propertyLambda}' refers to a method, not a property.");
+            return this;
+        }
 
-            var propInfo = member.Member as PropertyInfo;
-            if (propInfo == null)
-                throw new ArgumentException($"Expression '{propertyLambda}' refers to a field, not a property.");
+        public AuthorizationServerProviderConfig<T> AccessControlAllowOrigin(params string[] value)
+        {
+            this.AllowedOrigins = value;
 
-            if (type != propInfo.ReflectedType && !type.IsSubclassOf(propInfo.ReflectedType))
-                throw new ArgumentException($"Expression '{propertyLambda}' refers to a property that is not from type {type}.");
+            return this;
+        }
 
-            return propInfo;
+        public AuthorizationServerProviderConfig<T> AccessControlAllowCredentials(bool allowCredentials)
+        {
+            this.AllowCredentials = allowCredentials;
+
+            return this;
         }
     }
 }
