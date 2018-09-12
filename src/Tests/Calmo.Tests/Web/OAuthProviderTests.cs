@@ -1,6 +1,6 @@
-﻿using System;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using Calmo.Core.ExceptionHandling;
 using Calmo.Web.Api.OAuth;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -26,7 +26,7 @@ namespace Calmo.Tests.Web
         public void TestMethod2()
         {
             var controller = new TestController();
-            var value = controller.GetTokenData(x => x.IsAdmin);
+            var value = controller.GetTokenData();
         }
     }
 
@@ -36,9 +36,14 @@ namespace Calmo.Tests.Web
         public string Name { get; set; }
         public bool IsAdmin { get; set; }
 
-        public Task<bool> Authorize(string username, string password)
+        public Task<bool> Authenticate(string username, string password)
         {
             return Task.Run(() => true);
+        }
+
+        public Task<IEnumerable<ClaimData>> Authorize(string username)
+        {
+            return Task.Run(() => Enumerable.Empty<ClaimData>());
         }
     }
 

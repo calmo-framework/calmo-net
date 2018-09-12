@@ -64,7 +64,7 @@ namespace Calmo.Web.Api.OAuth
                     return;
                 }
 
-                var authorized = await this._authenticator.Authorize(context.UserName, context.Password);
+                var authorized = await this._authenticator.Authenticate(context.UserName, context.Password);
                 if (!authorized)
                 {
                     context.SetError("invalid_grant", "Username/password is invalid or your account is de-activated.");
@@ -85,6 +85,13 @@ namespace Calmo.Web.Api.OAuth
                         var claim = new Claim(claimName, claimValue);
                         identity.AddClaim(claim);
                     }
+                }
+
+                var userClaims = await this._authenticator.Authorize(context.UserName);
+                if (userClaims.HasItems())
+                {
+                    foreach (var claim in userClaims)
+                        identity.AddClaim(new Claim(claim.Type, claim.Value));
                 }
 
                 context.Validated(identity);
