@@ -13,6 +13,7 @@ namespace Calmo.Web.Api.OAuth
         internal TokenDataConfig<T> TokenDataConfig { get; private set; }
         internal string[] AllowedOrigins { get; private set; }
         internal bool AllowCredentials { get; private set; }
+        internal bool IsWindowsAuthentication { get; private set; }
 
         private event OnGrantAccessExceptionEventHandler _grantAccessExceptionEvent;
         internal void OnGrantAccessExceptionEvent(OnGrantAccessExceptionEventArgs e)
@@ -44,6 +45,13 @@ namespace Calmo.Web.Api.OAuth
         public AuthorizationServerProviderConfig<T> AccessControlAllowCredentials(bool allowCredentials)
         {
             this.AllowCredentials = allowCredentials;
+
+            return this;
+        }
+
+        public AuthorizationServerProviderConfig<T> UseWindowsAuthentication(bool useWindowsAuthentication = true)
+        {
+            this.IsWindowsAuthentication = useWindowsAuthentication;
 
             return this;
         }

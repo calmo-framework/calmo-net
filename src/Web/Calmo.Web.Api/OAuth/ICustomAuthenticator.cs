@@ -5,7 +5,7 @@ namespace Calmo.Web.Api.OAuth
 {
     public interface ICustomAuthenticator
     {
-        Task<bool> Authenticate(string username, string password);
-        Task<IEnumerable<ClaimData>> Authorize(string username);
+        Task<bool> Authenticate(AuthenticationArgs args);
+        Task<IEnumerable<ClaimData>> Authorize(AuthorizationArgs args);
     }
 }

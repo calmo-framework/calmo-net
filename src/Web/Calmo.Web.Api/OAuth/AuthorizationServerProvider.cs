@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using System.Web;
 using Microsoft.Owin.Security.OAuth;
 
 namespace Calmo.Web.Api.OAuth
@@ -58,13 +59,27 @@ namespace Calmo.Web.Api.OAuth
                 if (this._config.AllowCredentials)
                     context.OwinContext.Response.Headers.Add("Access-Control-Allow-Credentials", new[] { "true" });
 
-                if (String.IsNullOrWhiteSpace(context.UserName) || String.IsNullOrWhiteSpace(context.Password))
+                var username = this._config.IsWindowsAuthentication
+                    ? HttpContext.Current.Request.ServerVariables["LOGON_USER"]
+                    : context.UserName;
+                var password = context.Password;
+
+                if (String.IsNullOrWhiteSpace(username))
                 {
                     context.SetError("invalid_grant", "Username and password cannot be empty.");
                     return;
                 }
 
-                var authorized = await this._authenticator.Authenticate(context.UserName, context.Password);
+                if (!this._config.IsWindowsAuthentication && String.IsNullOrWhiteSpace(password))
+                {
+                    context.SetError("invalid_grant", "Username and password cannot be empty.");
+                    return;
+                }
+
+                var authenticationArgs = new AuthenticationArgs { Username = username, Password = password, Context = context };
+                var authorized = await this._authenticator.Authenticate(authenticationArgs);
+                context = authenticationArgs.Context;
+
                 if (!authorized)
                 {
                     context.SetError("invalid_grant", "Username/password is invalid or your account is de-activated.");
@@ -87,7 +102,10 @@ namespace Calmo.Web.Api.OAuth
                     }
                 }
 
-                var userClaims = await this._authenticator.Authorize(context.UserName);
+                var authorizationArgs = new AuthorizationArgs { Username = username, Context = context };
+                var userClaims = await this._authenticator.Authorize(authorizationArgs);
+                context = authorizationArgs.Context;
+
                 if (userClaims.HasItems())
                 {
                     foreach (var claim in userClaims)

@@ -35,13 +35,13 @@ namespace Calmo.Tests.Web
         public int Id { get; set; }
         public string Name { get; set; }
         public bool IsAdmin { get; set; }
-
-        public Task<bool> Authenticate(string username, string password)
+        
+        public Task<bool> Authenticate(AuthenticationArgs args)
         {
             return Task.Run(() => true);
         }
 
-        public Task<IEnumerable<ClaimData>> Authorize(string username)
+        public Task<IEnumerable<ClaimData>> Authorize(AuthorizationArgs args)
         {
             return Task.Run(() => Enumerable.Empty<ClaimData>());
         }
