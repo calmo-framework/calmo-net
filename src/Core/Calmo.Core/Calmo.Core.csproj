@@ -3,7 +3,7 @@
   <Import Project="..\..\packages\NuGet.Packer.1.2.10\build\NuGet.Packer.props" Condition="Exists('..\..\packages\NuGet.Packer.1.2.10\build\NuGet.Packer.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <PatchVersion>6</PatchVersion>
+    <PatchVersion>7</PatchVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -111,6 +111,7 @@
     </Compile>
     <Compile Include="Validator\Documents\DocumentDefinition.cs" />
     <Compile Include="Validator\Documents\Brazil\BrazilianDocuments.cs" />
+    <Compile Include="Validator\Documents\DocumentValidationExtensions.cs" />
     <Compile Include="Validator\Formats\Brazil\BrazilianFormats.cs" />
     <Compile Include="Validator\Documents\Brazil\CPFDocumentDefinition.cs" />
     <Compile Include="Validator\Documents\Brazil\CNPJDocumentDefinition.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="Validator\Formats\FormatDefinition.cs" />
     <Compile Include="Validator\Documents\DocumentValidation.cs" />
     <Compile Include="Validator\Formats\FormatValidation.cs" />
+    <Compile Include="Validator\Formats\FormatValidationExtensions.cs" />
     <Compile Include="Validator\Formats\US\USFormats.cs" />
     <Compile Include="Validator\Formats\US\PhoneFormatDefinition.cs" />
     <Compile Include="Validator\ValidationItem.cs" />

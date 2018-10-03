@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
-    <id>Calmo.Core</id>
-    <version>1.0.7</version>
-    <description>Core utility functions for .Net projects.</description>
-    <tags>.net utility helpers</tags>
+    <id>Calmo.Net</id>
+    <version>1.0.0</version>
+    <description>System.Net utility functions for .Net projects.</description>
+    <tags>system.net mail .net utility helpers</tags>
     
     <authors>Calmô! Community</authors>
     <owners>Calmô! Community</owners>
@@ -15,10 +15,10 @@
 
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
 
-    <releaseNotes>Validation improvements</releaseNotes>
+    <releaseNotes>Mail sender</releaseNotes>
   </metadata>
 
   <files>
-    <file src="Calmo.Core.dll" target="lib\net46\" />
+    <file src="Calmo.Net.dll" target="lib\net46\" />
   </files>
 </package>
