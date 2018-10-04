@@ -142,7 +142,7 @@ namespace System
         {
             try
             {
-                Convert.ChangeType(obj, type);
+                var unused = Convert.ChangeType(obj, type);
 
                 return true;
             }
@@ -155,7 +155,7 @@ namespace System
         public static bool IsNumeric(this object value)
         {
             if (value == null)
-                throw new ArgumentNullException("value");
+                throw new ArgumentNullException(nameof(value));
 
             return value is Int16 || value is Int32 || value is Int64
                    || value is Single || value is Double || value is Decimal

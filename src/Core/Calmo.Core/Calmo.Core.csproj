@@ -80,7 +80,6 @@
     <Compile Include="Enum\DataKeyAttribute.cs" />
     <Compile Include="ExceptionHandling\ExceptionExtension.cs" />
     <Compile Include="ExceptionHandling\Throw.cs" />
-    <Compile Include="FileEx.cs" />
     <Compile Include="FileExtensions.cs" />
     <Compile Include="GeoLocalization\GeoPoint.cs" />
     <Compile Include="ImageExtensions.cs" />

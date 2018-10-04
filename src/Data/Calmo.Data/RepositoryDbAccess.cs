@@ -4,12 +4,19 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using Calmo.Core;
 using Calmo.Core.Data;
 using Calmo.Core.ExceptionHandling;
 using Calmo.Core.Threading;
 using Calmo.Data.Configuration;
 using Dapper;
+
+#if NETCOREAPP
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+#else
+using Calmo.Core;
+using Calmo.Data.Properties;
+#endif
 
 namespace Calmo.Data
 {
@@ -23,11 +30,44 @@ namespace Calmo.Data
         private bool _buffered = true;
         private string _connectionStringName;
         private int _customTimeout = -1;
+#if !NETCOREAPP
         private static readonly DataSection DataSection = CustomConfiguration.Settings.Data();
+#else
+        private static DataSection DataSection;
+        internal static IConfiguration Configuration;
+#endif
 
         public IDbConnectionFactory DbConnectionFactory { get; set; }
 
-        public RepositoryDbAccess() { }
+#if NETCOREAPP
+        public RepositoryDbAccess()
+        {
+            var settings = new DataSection();
+            Configuration.GetSection("calmoData").Bind(settings);
+            DataSection = settings;
+        }
+#endif
+
+#if !NETCOREAPP
+        public string GetConnectionString(string name, string providerTypeName, string providerName)
+        {
+            var connectionStringData = ConfigurationManager.ConnectionStrings[name];
+
+            if (!String.IsNullOrEmpty(connectionStringData.ProviderName))
+            {
+                if (!String.Equals(connectionStringData.ProviderName, providerTypeName, StringComparison.InvariantCultureIgnoreCase))
+                    throw new InvalidOperationException(String.Format(Messages.IncorrectProvider, connectionStringData.ProviderName, name, providerName));
+            }
+
+            return connectionStringData.ConnectionString;
+        }
+#else
+        public string GetConnectionString(string name)
+        {
+            return Configuration.GetConnectionString(name);
+
+        }
+#endif
 
         public RepositoryDbAccess UseConnection(string connectionStringName)
         {
@@ -63,7 +103,7 @@ namespace Calmo.Data
 
         public RepositoryDbAccess WithCustomTimeout(int timeout)
         {
-            if (timeout <= 0) throw new ConfigurationErrorsException("Invalid timeout");
+            if (timeout <= 0) throw new InvalidOperationException("Invalid timeout");
             _customTimeout = timeout;
             return this;
         }
@@ -111,7 +151,7 @@ namespace Calmo.Data
             if (_connectionStringName == null)
                 _connectionStringName = DataSection.DefaultConnectionString;
 
-            return this.DbConnectionFactory.GetDbConnection(_connectionStringName);
+            return this.DbConnectionFactory.GetDbConnection(_connectionStringName, this);
         }
 
         private bool ScopeIsActive => ThreadStorage.GetData<bool>(TransactionScope.ActiveScopeKey);
@@ -124,7 +164,7 @@ namespace Calmo.Data
             }
         }
 
-        #region List
+#region List
 
         public IEnumerable<dynamic> List(string sql)
         {
@@ -276,9 +316,9 @@ namespace Calmo.Data
             return new Tuple<IEnumerable<T1>, IEnumerable<T2>, IEnumerable<T3>, IEnumerable<T4>>(result1, result2, result3, result4);
         }
 
-        #endregion
+#endregion
 
-        #region List Async
+#region List Async
 
         public async Task<IEnumerable<T>> ListAsync<T>(string sql)
         {
@@ -305,9 +345,9 @@ namespace Calmo.Data
             return result;
         }
 
-        #endregion
+#endregion
 
-        #region Get
+#region Get
 
         public T Get<T>(string sql)
         {
@@ -335,9 +375,9 @@ namespace Calmo.Data
             return result;
         }
 
-        #endregion
+#endregion
 
-        #region Get Async
+#region Get Async
 
         public async Task<T> GetAsync<T>(string sql)
         {
@@ -365,9 +405,9 @@ namespace Calmo.Data
             return result;
         }
 
-        #endregion
+#endregion
 
-        #region Execute
+#region Execute
 
         public T Execute<T>(string sql)
         {
@@ -414,9 +454,9 @@ namespace Calmo.Data
             }
         }
 
-        #endregion
+#endregion
 
-        #region Execute Async
+#region Execute Async
 
         public async Task<T> ExecuteAsync<T>(string sql)
         {
@@ -462,9 +502,9 @@ namespace Calmo.Data
             }
         }
 
-        #endregion
+#endregion
 
-        #region Paginagion methods (in future)
+#region Paginagion methods (in future)
 
         //private const string SplitOnColumnName = "RowNumber";
 
@@ -501,6 +541,6 @@ namespace Calmo.Data
         //    return pageSize <= 0 ? 10 : pageSize;
         //}
 
-        #endregion
+#endregion
     }
 }

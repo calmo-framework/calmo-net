@@ -209,7 +209,7 @@ namespace System.Collections.Generic
 
 #endregion
 
-#region List
+        #region List
 
         public static List<T> Insert<T>(this List<T> source, T item, bool first = true)
         {
@@ -246,7 +246,7 @@ namespace System.Collections.Generic
                 source.Add(item);
         }
 
-#endregion
+        #endregion
     }
 
     public class KeyEqualityComparer<T> : IEqualityComparer<T>

@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <PackageId>Calmo.Data.SQLServer.DotNetCore</PackageId>
+    <Product>Calmo.Data.SQLServer.DotNetCore</Product>
+    <Company>Calmô! Community</Company>
+    <Authors>Calmô! Community</Authors>
+    <Description>Dapper-based fluent library to simplify SQL Server data access.</Description>
+    <Copyright>Copyright © Calmô! 2018</Copyright>
+    <PackageLicenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/calmo-framework/calmo-net/</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/calmo-framework/calmo-net/master/art/icon.png</PackageIconUrl>
+    <PackageTags>.net core data dapper utility helpers SQL Server</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\..\Data\Calmo.Data.SQLServer\RepositoryDataAccessExtensions.cs" Link="RepositoryDataAccessExtensions.cs" />
+    <Compile Include="..\..\..\Data\Calmo.Data.SQLServer\SQLServerDbAccessConfigExtensions.cs" Link="SQLServerDbAccessConfigExtensions.cs" />
+    <Compile Include="..\..\..\Data\Calmo.Data.SQLServer\SQLServerDbConnectionFactory.cs" Link="SQLServerDbConnectionFactory.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Calmo.Data\Calmo.Data.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -16,6 +16,12 @@ namespace System.IO
 #endif
         public static string GetMIMEType(this string extension)
         {
+            if (String.IsNullOrWhiteSpace(extension))
+                return "application/octet-stream";
+
+            if (!extension.StartsWith("."))
+                extension = $".{extension}";
+
             switch (extension)
             {
                 case ".323": return "text/h323";

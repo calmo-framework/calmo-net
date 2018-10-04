@@ -147,7 +147,7 @@ namespace System
 
 #endregion
 
-#region TimeSpan
+        #region TimeSpan
 
         public static string ToStringFormat(this TimeSpan value)
         {
@@ -239,9 +239,9 @@ namespace System
             return valid;
         }
 
-#endregion
+        #endregion
 
-#region DateTime
+        #region DateTime
 
         public static string ToStringFormat(this DateTime value, bool formatTime = false, bool addSeconds = true)
         {
@@ -339,9 +339,9 @@ namespace System
             return value.ToString("MM/yyyy");
         }
 
-#endregion
+        #endregion
 
-#region Long
+        #region Long
 
         public static long ToLong(this string value)
         {
@@ -361,6 +361,6 @@ namespace System
             return String.IsNullOrWhiteSpace(valor) ? valor.To<long>() : (long?)null;
         }
 
-#endregion
+        #endregion
     }
 }
