@@ -43,7 +43,7 @@ namespace Calmo.Tests.Core
             var model = new Model { Name = "John" };
             var validation = model.Validate()
                                   .Using()
-                                  .Rule(p => p.Name, n => n.Name != null);
+                                  .Rule(p => p.Name, name => name != null);
 
             Assert.IsTrue(validation.Success);
         }
@@ -127,8 +127,19 @@ namespace Calmo.Tests.Core
 
     public class Model
     {
+        public long Id { get; set; }
+
         public string Name { get; set; }
         public string CPF { get; set; }
         public string Email { get; set; }
+
+        public DateTime BirthDate { get; set; }
+        public string DDD { get; set; }
+        public string MobilePhone { get; set; }
+
+        public string TokenEmail { get; set; }
+        public string TokenSMS { get; set; }
+
+        public string Password { get; set; }
     }
 }

@@ -42,18 +42,17 @@ namespace Calmo.Core.Validator
             return this;
         }
 
-        public ValidationResult<TModel> Rule<TProperty>(Expression<Func<TModel, TProperty>> property, Func<TModel, bool> rule, string message = null)
+        public ValidationResult<TModel> Rule(string ruleName, Func<TModel, bool> rule, string message = null)
         {
             if (this._breakIfIsInvalid && !this.Success)
                 return this;
-            this._breakIfIsInvalid = false;
 
-            if (!GetMember(property, out var member)) return this;
+            this._breakIfIsInvalid = false;
 
             var index = 0;
             foreach (var value in this.Values)
             {
-                this.AddItem(rule.Invoke(value), message, member.Name, member.Name, index);
+                this.AddItem(rule.Invoke(value), message, ruleName, null, index);
                 index++;
             }
 
@@ -68,12 +67,11 @@ namespace Calmo.Core.Validator
             this._breakIfIsInvalid = false;
 
             if (!GetMember(property, out var member)) return this;
-            if (!GetMemberProperty(member, out var propertyInfo)) return this;
 
             var index = 0;
             foreach (var value in this.Values)
             {
-                var propertyValue = this.GetMemberValue<TProperty>(propertyInfo, value);
+                var propertyValue = value.GetPropertyValue<TProperty>(member.Name);
                 this.AddItem(rule(propertyValue), message, member.Name, member.Name, index);
                 index++;
             }
@@ -89,12 +87,11 @@ namespace Calmo.Core.Validator
             this._breakIfIsInvalid = false;
 
             if (!GetMember(property, out var member)) return this;
-            if (!GetMemberProperty(member, out var propertyInfo)) return this;
 
             var index = 0;
             foreach (var value in this.Values)
             {
-                var propertyValue = this.GetMemberValue<string>(propertyInfo, value);
+                var propertyValue = value.GetPropertyValue<string>(member.Name);
                 this.AddItem(rule.Validate(propertyValue), message, member.Name, member.Name, index);
                 index++;
             }
@@ -110,12 +107,11 @@ namespace Calmo.Core.Validator
             this._breakIfIsInvalid = false;
 
             if (!GetMember(property, out var member)) return this;
-            if (!GetMemberProperty(member, out var propertyInfo)) return this;
 
             var index = 0;
             foreach (var value in this.Values)
             {
-                var propertyValue = this.GetMemberValue<string>(propertyInfo, value);
+                var propertyValue = value.GetPropertyValue<string>(member.Name);
                 this.AddItem(rule.Validate(propertyValue), message, member.Name, member.Name, index);
                 index++;
             }
@@ -172,25 +168,6 @@ namespace Calmo.Core.Validator
 
             member = memberExpression.Member;
             return true;
-        }
-
-        private bool GetMemberProperty(MemberInfo member, out PropertyInfo propertyInfo)
-        {
-#if !__MOBILE__
-            propertyInfo = member.DeclaringType?.GetProperty(member.Name);
-#else
-            propertyInfo = member.DeclaringType?.GetRuntimeProperty(member.Name);
-#endif
-            return propertyInfo == null;
-        }
-
-        private T GetMemberValue<T>(PropertyInfo propertyInfo, object value)
-        {
-#if !__MOBILE__
-            return (T)propertyInfo.GetValue(value, null);
-#else
-            return (T)propertyInfo.GetValue(value);
-#endif
         }
 
         private void AddItem(bool rule, string message = null, string property = null, string legend = null, int index = 0)
