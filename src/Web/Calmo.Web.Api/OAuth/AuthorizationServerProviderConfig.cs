@@ -11,6 +11,7 @@ namespace Calmo.Web.Api.OAuth
     public class AuthorizationServerProviderConfig<T>
     {
         internal TokenDataConfig<T> TokenDataConfig { get; private set; }
+        internal MessagesConfig MessagesConfig { get; private set; }
         internal string[] AllowedOrigins { get; private set; }
         internal bool AllowCredentials { get; private set; }
         internal bool IsWindowsAuthentication { get; private set; }
@@ -31,6 +32,13 @@ namespace Calmo.Web.Api.OAuth
         public AuthorizationServerProviderConfig<T> TokenData(Func<TokenDataConfig<T>, TokenDataConfig<T>> func)
         {
             this.TokenDataConfig = func.Invoke(this.TokenDataConfig ?? new TokenDataConfig<T>());
+
+            return this;
+        }
+
+        public AuthorizationServerProviderConfig<T> Messages(Func<MessagesConfig, MessagesConfig> func)
+        {
+            this.MessagesConfig = func.Invoke(this.MessagesConfig ?? new MessagesConfig());
 
             return this;
         }

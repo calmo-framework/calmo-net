@@ -66,23 +66,26 @@ namespace Calmo.Web.Api.OAuth
 
                 if (String.IsNullOrWhiteSpace(username))
                 {
-                    context.SetError("invalid_grant", "Username and password cannot be empty.");
+                    var message = this._config.MessagesConfig.CustomMessages[AuthResult.UserOrPasswordEmpty];
+                    context.SetError("invalid_grant", message);
                     return;
                 }
 
                 if (!this._config.IsWindowsAuthentication && String.IsNullOrWhiteSpace(password))
                 {
-                    context.SetError("invalid_grant", "Username and password cannot be empty.");
+                    var message = this._config.MessagesConfig.CustomMessages[AuthResult.UserOrPasswordEmpty];
+                    context.SetError("invalid_grant", message);
                     return;
                 }
 
                 var authenticationArgs = new AuthenticationArgs { Username = username, Password = password, Context = context };
-                var authorized = await this._authenticator.Authenticate(authenticationArgs);
+                var authResult = await this._authenticator.Authenticate(authenticationArgs);
                 context = authenticationArgs.Context;
 
-                if (!authorized)
+                if (authResult.In(AuthResult.Unauthorized, AuthResult.UserExpired, AuthResult.PasswordExpired))
                 {
-                    context.SetError("invalid_grant", "Username/password is invalid or your account is de-activated.");
+                    var message = this._config.MessagesConfig.CustomMessages[authResult];
+                    context.SetError("invalid_grant", message);
                     return;
                 }
 

@@ -5,7 +5,16 @@ namespace Calmo.Web.Api.OAuth
 {
     public interface ICustomAuthenticator
     {
-        Task<bool> Authenticate(AuthenticationArgs args);
+        Task<AuthResult> Authenticate(AuthenticationArgs args);
         Task<IEnumerable<ClaimData>> Authorize(AuthorizationArgs args);
+    }
+
+    public enum AuthResult
+    {
+        Success,
+        Unauthorized,
+        PasswordExpired,
+        UserExpired,
+        UserOrPasswordEmpty
     }
 }

@@ -23,4 +23,23 @@ namespace Calmo.Web.Api.OAuth
             return this;
         }
     }
+
+    public class MessagesConfig
+    {
+        internal Dictionary<AuthResult, string> CustomMessages = new Dictionary<AuthResult, string>
+        {
+            {AuthResult.Success, "Access granted."},
+            {AuthResult.Unauthorized, "Username/password is invalid or your account is de-activated."},
+            {AuthResult.PasswordExpired, "Password expired."},
+            {AuthResult.UserExpired, "Username/password is invalid or your account is de-activated."},
+            {AuthResult.UserOrPasswordEmpty, "Username and password cannot be empty."}
+        };
+
+        public MessagesConfig Set(AuthResult authResult, string message)
+        {
+            this.CustomMessages[authResult] = message;
+
+            return this;
+        }
+    }
 }

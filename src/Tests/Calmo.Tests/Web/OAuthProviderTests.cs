@@ -19,6 +19,8 @@ namespace Calmo.Tests.Web
                 .TokenData(c => c.Map(p => p.Id)
                                  .Map(p => p.Name)
                                  .Map(p => p.IsAdmin))
+                .Messages(m => m.Set(AuthResult.Unauthorized, "Vaza mermão")
+                                .Set(AuthResult.Success, "lalala"))
                 .OnError(args => { });
         }
 
@@ -36,9 +38,9 @@ namespace Calmo.Tests.Web
         public string Name { get; set; }
         public bool IsAdmin { get; set; }
         
-        public Task<bool> Authenticate(AuthenticationArgs args)
+        public Task<AuthResult> Authenticate(AuthenticationArgs args)
         {
-            return Task.Run(() => true);
+            return Task.Run(() => AuthResult.Success);
         }
 
         public Task<IEnumerable<ClaimData>> Authorize(AuthorizationArgs args)
