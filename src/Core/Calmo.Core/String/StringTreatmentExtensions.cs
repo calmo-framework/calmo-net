@@ -9,6 +9,20 @@ namespace System
 {
     public static class StringTreatmentExtensions
     {
+        public static string SecureToLower(this string s, CultureInfo cultureInfo = null)
+        {
+            if (String.IsNullOrWhiteSpace(s)) return s;
+
+            return cultureInfo == null ? s.ToLower() : s.ToLower(cultureInfo);
+        }
+
+        public static string SecureToUpper(this string s, CultureInfo cultureInfo = null)
+        {
+            if (String.IsNullOrWhiteSpace(s)) return s;
+
+            return cultureInfo == null ? s.ToUpper() : s.ToUpper(cultureInfo);
+        }
+
         public static string ClearIfNullOrWhiteSpace(this string s)
         {
             return String.IsNullOrWhiteSpace(s) ? String.Empty : s;
