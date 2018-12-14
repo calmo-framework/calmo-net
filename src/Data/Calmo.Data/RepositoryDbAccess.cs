@@ -55,6 +55,9 @@ namespace Calmo.Data
         {
             var connectionStringData = ConfigurationManager.ConnectionStrings[name];
 
+            if (connectionStringData == null)
+                throw new ConfigurationErrorsException($"A conexão \"{name}\" não foi encontrada no arquivo de configuração.");
+
             if (!String.IsNullOrEmpty(connectionStringData.ProviderName))
             {
                 if (!String.Equals(connectionStringData.ProviderName, providerTypeName, StringComparison.InvariantCultureIgnoreCase))
