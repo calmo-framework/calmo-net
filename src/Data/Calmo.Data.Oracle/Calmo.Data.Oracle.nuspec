@@ -2,13 +2,13 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>Calmo.Data.Oracle</id>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <description>Dapper-based fluent library to simplify Oracle x86 data access.</description>
     <tags>.net utility helpers Data Oracle x86</tags>
 
     <dependencies>
       <dependency id="Calmo.Core" version="1.0.2" />
-      <dependency id="Calmo.Data" version="1.0.2" />
+      <dependency id="Calmo.Data" version="1.0.4" />
       <dependency id="odp.net.x86" version="[112.3.20]" />
     </dependencies>
 
@@ -21,7 +21,7 @@
 
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
 
-    <releaseNotes>Change .Net Framework to 4.6.2</releaseNotes>
+    <releaseNotes>Add support to output parameters using procedures.</releaseNotes>
   </metadata>
 
   <files>
