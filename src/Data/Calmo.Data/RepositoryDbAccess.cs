@@ -25,11 +25,13 @@ namespace Calmo.Data
         private const int TOO_LONG_COMMANDTIMEOUT = 14400;
 
         private object _parameters;
+        private Dictionary<string, DbType> _output;
         private CommandType _commandType = CommandType.StoredProcedure;
         private bool _useLongTimeout;
         private bool _buffered = true;
         private string _connectionStringName;
         private int _customTimeout = -1;
+        private DynamicParameters _outputParameters;
 #if !NETCOREAPP
         private static readonly DataSection DataSection = CustomConfiguration.Settings.Data();
 #else
@@ -93,6 +95,19 @@ namespace Calmo.Data
         {
             _parameters = parameters;
             return this;
+        }
+
+        public RepositoryDbAccessWithOutput WithOutput(string name, DbType type)
+        {
+            if (_output == null)
+                _output = new Dictionary<string, DbType>();
+
+            if (_output.ContainsKey(name))
+                _output[name] = type;
+            else
+                _output.Add(name, type);
+
+            return new RepositoryDbAccessWithOutput(this);
         }
 
         public RepositoryDbAccess UseLongTimeout()
@@ -164,6 +179,26 @@ namespace Calmo.Data
             }
         }
 
+        private object GetParameters()
+        {
+            if (!_output.HasItems()) return _parameters;
+
+            var parameters = new DynamicParameters();
+            parameters.AddDynamicParams(_parameters);
+            foreach (var item in _output)
+            {
+                parameters.Add(item.Key, null, item.Value, ParameterDirection.Output);
+            }
+
+            _outputParameters = parameters;
+            return parameters;
+        }
+
+        internal DynamicParameters GetOutputParameters()
+        {
+            return _outputParameters;
+        }
+
 #region List
 
         public IEnumerable<dynamic> List(string sql)
@@ -176,7 +211,7 @@ namespace Calmo.Data
 
             try
             {
-                result = connection.Query(sql, _parameters,
+                result = connection.Query(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?) null),
@@ -203,7 +238,7 @@ namespace Calmo.Data
 
             try
             {
-                result = connection.Query<T>(sql, _parameters,
+                result = connection.Query<T>(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?) null),
@@ -231,7 +266,7 @@ namespace Calmo.Data
 
             try
             {
-                var reader = connection.QueryMultiple(sql, _parameters,
+                var reader = connection.QueryMultiple(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?) null),
@@ -262,7 +297,7 @@ namespace Calmo.Data
 
             try
             {
-                var reader = connection.QueryMultiple(sql, _parameters,
+                var reader = connection.QueryMultiple(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?) null),
@@ -295,7 +330,7 @@ namespace Calmo.Data
 
             try
             {
-                var reader = connection.QueryMultiple(sql, _parameters,
+                var reader = connection.QueryMultiple(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?) null),
@@ -329,7 +364,7 @@ namespace Calmo.Data
 
             try
             {
-                result = await connection.QueryAsync<T>(sql, _parameters,
+                result = await connection.QueryAsync<T>(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?) null),
@@ -358,7 +393,7 @@ namespace Calmo.Data
 
             try
             {
-                result = connection.Query<T>(sql, _parameters,
+                result = connection.Query<T>(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?) null),
@@ -388,7 +423,7 @@ namespace Calmo.Data
 
             try
             {
-                var queryResult = await connection.QueryAsync<T>(sql, _parameters,
+                var queryResult = await connection.QueryAsync<T>(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?)null),
@@ -417,7 +452,7 @@ namespace Calmo.Data
 
             try
             {
-                return connection.Query<T>(sql, _parameters,
+                return connection.Query<T>(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?) null),
@@ -440,7 +475,7 @@ namespace Calmo.Data
 
             try
             {
-                connection.Execute(sql, _parameters,
+                connection.Execute(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?)null),
@@ -466,7 +501,7 @@ namespace Calmo.Data
 
             try
             {
-                var queryResult = await connection.QueryAsync<T>(sql, _parameters,
+                var queryResult = await connection.QueryAsync<T>(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?) null),
@@ -488,7 +523,7 @@ namespace Calmo.Data
 
             try
             {
-                await connection.ExecuteAsync(sql, _parameters,
+                await connection.ExecuteAsync(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?) null),
