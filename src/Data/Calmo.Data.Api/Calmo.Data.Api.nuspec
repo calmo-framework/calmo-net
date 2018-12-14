@@ -17,7 +17,7 @@
     <authors>Calmô! Community</authors>
     <owners>Calmô! Community</owners>
     <copyright>Copyright © Calmô! 2018</copyright>
-    <licenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</licenseUrl>
+    <license type="expression">AGPL-3.0-or-later</license>
     <projectUrl>https://github.com/calmo-framework/calmo-net/</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/calmo-framework/calmo-net/master/art/icon.png</iconUrl>
 
