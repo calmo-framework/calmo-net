@@ -1,5 +1,5 @@
 resources:
-- trigger
+- trigger:
    - master
 - variables:
     solution: 'src/calmo.framework.sln'
