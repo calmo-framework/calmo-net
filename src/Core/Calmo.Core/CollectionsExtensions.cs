@@ -232,7 +232,7 @@ namespace System.Collections.Generic
                 throw new ArgumentNullException("comparison");
 
             if (!(list is List<T>))
-                throw new NotSupportedException("A lista deve ser do tipo List<T>.");
+                throw new NotSupportedException("The object type must be List<T>.");
 
             ((List<T>)list).Sort(comparison);
         }
