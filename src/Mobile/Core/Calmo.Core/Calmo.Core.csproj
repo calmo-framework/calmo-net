@@ -2,14 +2,17 @@
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <PatchVersion>0</PatchVersion>
+  </PropertyGroup>
+  <PropertyGroup>
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{912506A8-6689-4732-A171-D46C02F8BF50}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Calmo.Core</RootNamespace>
-    <AssemblyName>Calmo.Core</AssemblyName>
+    <RootNamespace>Calmo.Xamarin.Core</RootNamespace>
+    <AssemblyName>Calmo.Xamarin.Core</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -170,6 +173,9 @@
     <Compile Include="..\..\..\Core\Calmo.Core\Validator\Documents\DocumentValidation.cs">
       <Link>Validator\Documents\DocumentValidation.cs</Link>
     </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Documents\DocumentValidationExtensions.cs">
+      <Link>Validator\Documents\DocumentValidationExtensions.cs</Link>
+    </Compile>
     <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\Brazil\BrazilianFormats.cs">
       <Link>Validator\Formats\Brazil\BrazilianFormats.cs</Link>
     </Compile>
@@ -193,6 +199,9 @@
     </Compile>
     <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\FormatValidation.cs">
       <Link>Validator\Formats\FormatValidation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\FormatValidationExtensions.cs">
+      <Link>Validator\Formats\FormatValidationExtensions.cs</Link>
     </Compile>
     <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\US\PhoneFormatDefinition.cs">
       <Link>Validator\Formats\US\PhoneFormatDefinition.cs</Link>

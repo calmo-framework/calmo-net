@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Calmo.Core.ExceptionHandling;
+using System.Web;
 using Microsoft.Owin.Security.OAuth;
 
 namespace Calmo.Web.Api.OAuth
@@ -20,7 +19,7 @@ namespace Calmo.Web.Api.OAuth
             this._config = new AuthorizationServerProviderConfig<T>();
         }
 
-        public AuthorizationServerProviderConfig<T> TokenData()
+        public AuthorizationServerProviderConfig<T> Configure()
         {
             return _config;
         }
@@ -32,9 +31,9 @@ namespace Calmo.Web.Api.OAuth
                 context.AdditionalResponseParameters.Add(property.Key, property.Value);
             }
 
-            if (this._config._tokenDataProperties != null)
+            if (this._config.TokenDataConfig.Properties != null)
             {
-                foreach (var property in this._config._tokenDataProperties)
+                foreach (var property in this._config.TokenDataConfig.Properties)
                 {
                     var propertyName = property.Name.ToCamelCaseWord();
                     var claim = context.Identity.Claims.FirstOrDefault(x => x.Type == propertyName);
@@ -47,46 +46,81 @@ namespace Calmo.Web.Api.OAuth
 
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
-            await Task.Run(() =>
-            {
-                context.Validated();
-            });
+            
+            await Task.Run(() => { context.Validated(); });
         }
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
             try
             {
-                context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
+                context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", !this._config.AllowedOrigins.HasItems() ? new[] { "*" } : this._config.AllowedOrigins);
 
-                if (String.IsNullOrWhiteSpace(context.UserName) || String.IsNullOrWhiteSpace(context.Password))
+                if (this._config.AllowCredentials)
+                    context.OwinContext.Response.Headers.Add("Access-Control-Allow-Credentials", new[] { "true" });
+
+                var username = this._config.IsWindowsAuthentication
+                    ? HttpContext.Current.Request.ServerVariables["LOGON_USER"]
+                    : context.UserName;
+                var password = context.Password;
+
+                if (String.IsNullOrWhiteSpace(username))
                 {
-                    context.SetError("invalid_grant", "Username and password cannot be empty.");
+                    var message = this._config.MessagesConfig.CustomMessages[AuthResult.UserOrPasswordEmpty];
+                    context.SetError("invalid_grant", message);
                     return;
                 }
 
-                var authorized = await this._authenticator.Authorize(context.UserName, context.Password);
-                if (!authorized)
+                if (!this._config.IsWindowsAuthentication && String.IsNullOrWhiteSpace(password))
                 {
-                    context.SetError("invalid_grant", "Username/password is invalid or your account is de-activated.");
+                    var message = this._config.MessagesConfig.CustomMessages[AuthResult.UserOrPasswordEmpty];
+                    context.SetError("invalid_grant", message);
+                    return;
+                }
+
+                var authenticationArgs = new AuthenticationArgs { Username = username, Password = password, Context = context };
+                var authResult = await this._authenticator.Authenticate(authenticationArgs);
+                context = authenticationArgs.Context;
+
+                if (authResult.In(AuthResult.Unauthorized, AuthResult.UserExpired, AuthResult.PasswordExpired))
+                {
+                    var message = this._config.MessagesConfig.CustomMessages[authResult];
+                    context.SetError("invalid_grant", message);
                     return;
                 }
 
                 var identity = new ClaimsIdentity(context.Options.AuthenticationType);
 
-                if (this._config._tokenDataProperties != null)
+                if (this._config.TokenDataConfig.Properties != null)
                 {
-                    foreach (var property in this._config._tokenDataProperties)
+                    foreach (var property in this._config.TokenDataConfig.Properties)
                     {
                         var propertyValue = property.GetValue(_authenticator);
-                        identity.AddClaim(new Claim(property.Name.ToCamelCaseWord(), propertyValue?.ToString() ?? string.Empty));
+
+                        var claimName = property.Name.ToCamelCaseWord();
+                        var claimValue = propertyValue?.ToString() ?? string.Empty;
+
+                        var claim = new Claim(claimName, claimValue);
+                        identity.AddClaim(claim);
                     }
+                }
+
+                var authorizationArgs = new AuthorizationArgs { Username = username, Context = context };
+                var userClaims = await this._authenticator.Authorize(authorizationArgs);
+                context = authorizationArgs.Context;
+
+                if (userClaims.HasItems())
+                {
+                    foreach (var claim in userClaims)
+                        identity.AddClaim(new Claim(claim.Type, claim.Value));
                 }
 
                 context.Validated(identity);
             }
             catch (Exception ex)
             {
+                this._config.OnGrantAccessExceptionEvent(new OnGrantAccessExceptionEventArgs(ex));
+
                 context.SetError("internal_server_error","Internal Server Error. Please contact the administrator.");
             }
         }

@@ -1,0 +1,92 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <PackageId>Calmo.Core.DotNetCore</PackageId>
+    <Authors>Calmô! Community</Authors>
+    <Product>Calmo.Core.DotNetCore</Product>
+    <Description>Core utility functions for .net core projects.</Description>
+    <Copyright>Copyright © Calmô! 2018</Copyright>
+    <PackageLicenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/calmo-framework/calmo-net/</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/calmo-framework/calmo-net/master/art/icon.png</PackageIconUrl>
+    <PackageTags>.net core utility helpers</PackageTags>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Version>1.0.1</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\TransactionScope.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\..\Core\Calmo.Core\ArrayExtensions.cs" Link="ArrayExtensions.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\AsyncExtensions.cs" Link="AsyncExtensions.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\AsyncThreadCaller.cs" Link="AsyncThreadCaller.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Automation\RobotProcess.cs" Link="Automation\RobotProcess.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Automation\RobotProcessExecutionType.cs" Link="Automation\RobotProcessExecutionType.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Automation\RobotProcessStatus.cs" Link="Automation\RobotProcessStatus.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\CollectionsExtensions.cs" Link="CollectionsExtensions.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Collections\PagedList.cs" Link="Collections\PagedList.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Collections\PagedListExtensions.cs" Link="Collections\PagedListExtensions.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\ConversionExtensions.cs" Link="ConversionExtensions.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Data\TransactionScope.cs" Link="Data\TransactionScope.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\DateTimeExtensions.cs" Link="DateTimeExtensions.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\DictionaryExtensions.cs" Link="DictionaryExtensions.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Emoji.cs" Link="Emoji.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\EnumExtensions.cs" Link="EnumExtensions.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Enum\DataKeyAttribute.cs" Link="Enum\DataKeyAttribute.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\ExceptionHandling\DomainException.cs" Link="ExceptionHandling\DomainException.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\ExceptionHandling\ExceptionExtension.cs" Link="ExceptionHandling\ExceptionExtension.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\ExceptionHandling\Throw.cs" Link="ExceptionHandling\Throw.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\FileExtensions.cs" Link="FileExtensions.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\GeoLocalization\GeoPoint.cs" Link="GeoLocalization\GeoPoint.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\LinqExtensions.cs" Link="LinqExtensions.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\MathExtensions.cs" Link="MathExtensions.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\NumberExtensions.cs" Link="NumberExtensions.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\ObjectExtensions.cs" Link="ObjectExtensions.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\String\HtmlUtility.cs" Link="String\HtmlUtility.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\String\StringFormatExtensions.cs" Link="String\StringFormatExtensions.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\String\StringHandleExtensions.cs" Link="String\StringHandleExtensions.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\String\StringTreatmentExtensions.cs" Link="String\StringTreatmentExtensions.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Threading\ThreadStorage.cs" Link="Threading\ThreadStorage.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\TimeSpanExtensions.cs" Link="TimeSpanExtensions.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\TypeExtensions.cs" Link="TypeExtensions.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Documents\Brazil\BrazilianDocuments.cs" Link="Validator\Documents\Brazil\BrazilianDocuments.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Documents\Brazil\CNPJDocumentDefinition.cs" Link="Validator\Documents\Brazil\CNPJDocumentDefinition.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Documents\Brazil\CPFDocumentDefinition.cs" Link="Validator\Documents\Brazil\CPFDocumentDefinition.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Documents\DocumentDefinition.cs" Link="Validator\Documents\DocumentDefinition.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Documents\DocumentValidation.cs" Link="Validator\Documents\DocumentValidation.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Documents\DocumentValidationExtensions.cs" Link="Validator\Documents\DocumentValidationExtensions.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\Brazil\BrazilianFormats.cs" Link="Validator\Formats\Brazil\BrazilianFormats.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\Brazil\CEPFormatDefinition.cs" Link="Validator\Formats\Brazil\CEPFormatDefinition.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\Brazil\CNPJFormatDefinition.cs" Link="Validator\Formats\Brazil\CNPJFormatDefinition.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\Brazil\CPFFormatDefinition.cs" Link="Validator\Formats\Brazil\CPFFormatDefinition.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\Brazil\PhoneFormatDefinition.cs" Link="Validator\Formats\Brazil\PhoneFormatDefinition.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\CommonFormatDefinition.cs" Link="Validator\Formats\CommonFormatDefinition.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\FormatDefinition.cs" Link="Validator\Formats\FormatDefinition.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\FormatValidation.cs" Link="Validator\Formats\FormatValidation.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\FormatValidationExtensions.cs" Link="Validator\Formats\FormatValidationExtensions.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\US\PhoneFormatDefinition.cs" Link="Validator\Formats\US\PhoneFormatDefinition.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\Formats\US\USFormats.cs" Link="Validator\Formats\US\USFormats.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\ValidationContext.cs" Link="Validator\ValidationContext.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\ValidationItem.cs" Link="Validator\ValidationItem.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\ValidationResult.cs" Link="Validator\ValidationResult.cs" />
+    <Compile Include="..\..\..\Core\Calmo.Core\Validator\ValidationScope.cs" Link="Validator\ValidationScope.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Automation\" />
+    <Folder Include="Collections\" />
+    <Folder Include="Data\" />
+    <Folder Include="Enum\" />
+    <Folder Include="ExceptionHandling\" />
+    <Folder Include="GeoLocalization\" />
+    <Folder Include="String\" />
+    <Folder Include="Threading\" />
+    <Folder Include="Validator\Documents\Brazil\" />
+    <Folder Include="Validator\Formats\Brazil\" />
+    <Folder Include="Validator\Formats\US\" />
+  </ItemGroup>
+
+</Project>

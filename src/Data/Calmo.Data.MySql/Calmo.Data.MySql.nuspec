@@ -2,26 +2,26 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>Calmo.Data.MySql</id>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <description>Dapper-based fluent library to simplify MySql data access.</description>
     <tags>.net utility helpers Data MySql</tags>
 
     <dependencies>
       <dependency id="Calmo.Core" version="1.0.2" />
-      <dependency id="Calmo.Data" version="1.0.2" />
+      <dependency id="Calmo.Data" version="1.0.4" />
       <dependency id="MySql.Data" version="[6.9.9]" />
     </dependencies>
 
     <authors>Calmô! Community</authors>
     <owners>Calmô! Community</owners>
     <copyright>Copyright © Calmô! 2018</copyright>
-    <licenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</licenseUrl>
+    <license type="expression">AGPL-3.0-or-later</license>
     <projectUrl>https://github.com/calmo-framework/calmo-net/</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/calmo-framework/calmo-net/master/art/icon.png</iconUrl>
 
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
 
-    <releaseNotes>Change .Net Framework to 4.6.2</releaseNotes>
+    <releaseNotes>Add support to output parameters using procedures.</releaseNotes>
   </metadata>
 
   <files>

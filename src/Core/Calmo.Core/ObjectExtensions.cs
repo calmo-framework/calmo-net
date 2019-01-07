@@ -3,6 +3,7 @@ using System.Reflection;
 using Microsoft.CSharp.RuntimeBinder;
 using System.Runtime.CompilerServices;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace System.Dynamic
 {
@@ -113,11 +114,35 @@ namespace System
             return (T)Convert.ChangeType(value, type);
         }
 
+        public static object To(this object value, Type type)
+        {
+            if (type.IsNullable())
+            {
+                if (value == null || String.IsNullOrWhiteSpace(value.ToString()))
+                    return null;
+
+                try
+                {
+                    return Convert.ChangeType(value, type.GetUnderlyingType());
+                }
+                catch
+                {
+#if !__MOBILE__
+                    return Convert.ChangeType(value, type.GetGenericArguments()[0]);
+#else
+                    return Convert.ChangeType(value, type.GenericTypeArguments[0]);
+#endif
+                }
+            }
+
+            return Convert.ChangeType(value, type);
+        }
+
         public static bool CanConvertTo(this object obj, Type type)
         {
             try
             {
-                Convert.ChangeType(obj, type);
+                var unused = Convert.ChangeType(obj, type);
 
                 return true;
             }
@@ -130,7 +155,7 @@ namespace System
         public static bool IsNumeric(this object value)
         {
             if (value == null)
-                throw new ArgumentNullException("value");
+                throw new ArgumentNullException(nameof(value));
 
             return value is Int16 || value is Int32 || value is Int64
                    || value is Single || value is Double || value is Decimal
@@ -172,6 +197,24 @@ namespace System
         public static bool In<T>(this T value, IEnumerable<T> args)
         {
             return args.Contains(value);
+        }
+
+        public static PropertyInfo GetPropertyInfo<TSource, TProperty>(this Expression<Func<TSource, TProperty>> propertyLambda)
+        {
+            var type = typeof(TSource);
+
+            var member = propertyLambda.Body as MemberExpression;
+            if (member == null)
+                throw new ArgumentException($"Expression '{propertyLambda}' refers to a method, not a property.");
+
+            var propInfo = member.Member as PropertyInfo;
+            if (propInfo == null)
+                throw new ArgumentException($"Expression '{propertyLambda}' refers to a field, not a property.");
+
+            if (type != propInfo.ReflectedType && !type.IsSubclassOf(propInfo.ReflectedType))
+                throw new ArgumentException($"Expression '{propertyLambda}' refers to a property that is not from type {type}.");
+
+            return propInfo;
         }
     }
 }

@@ -2,20 +2,20 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>Calmo.Core</id>
-    <version>1.0.2</version>
+    <version>1.0.8</version>
     <description>Core utility functions for .Net projects.</description>
     <tags>.net utility helpers</tags>
     
     <authors>Calmô! Community</authors>
     <owners>Calmô! Community</owners>
     <copyright>Copyright © Calmô! 2018</copyright>
-    <licenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</licenseUrl>
+    <license type="expression">AGPL-3.0-or-later</license>
     <projectUrl>https://github.com/calmo-framework/calmo-net/</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/calmo-framework/calmo-net/master/art/icon.png</iconUrl>
 
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
 
-    <releaseNotes>Change .Net Framework to 4.6.2</releaseNotes>
+    <releaseNotes>Validation improvements</releaseNotes>
   </metadata>
 
   <files>

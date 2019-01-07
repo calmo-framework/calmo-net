@@ -16,11 +16,9 @@ namespace System
         {
             Throw.IfArgumentNull(exception, "exception");
 
-            var protocolException = exception as ProtocolException;
-            if (protocolException != null)
+            if (exception is ProtocolException protocolException)
             {
-                var webException = protocolException.InnerException as WebException;
-                if (webException != null)
+                if (protocolException.InnerException is WebException webException)
                 {
                     var responseStream = webException.Response.GetResponseStream();
                     if (responseStream != null)
@@ -30,24 +28,23 @@ namespace System
 
                         var ms = new MemoryStream(Encoding.Unicode.GetBytes(json));
                         var serializer = GetSerializer(typeof(TServiceFault));
-                        var serviceFault = (TServiceFault)serializer.ReadObject(ms);
+                        var serviceFault = default(TServiceFault);
+                        try
+                        {
+                            serviceFault = (TServiceFault)serializer.ReadObject(ms);
+                        }
+                        catch
+                        {
+                            // ignored 
+                        }
                         ms.Close();
 
-                        if (serviceFault != null)
-                        {
-                            return serviceFault;
-                        }
+                        return serviceFault;
                     }
                 }
             }
-            else
-            {
-                var teste = (FaultException)exception;
-            }
 
-            if (exceptionHandler != null)
-                exceptionHandler(exception);
-
+            exceptionHandler?.Invoke(exception);
             throw exception;
         }
 

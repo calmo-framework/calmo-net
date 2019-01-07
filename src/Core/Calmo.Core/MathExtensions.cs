@@ -33,7 +33,7 @@
             if (value1.HasValue && value2.HasValue)
                 return Math.Max(value1.Value, value2.Value);
 
-            return value1.HasValue ? value1 : value2;
+            return value1 ?? value2;
         }
 
         public static int? Min(this int? value1, int? value2)
@@ -44,7 +44,7 @@
             if (value1.HasValue && value2.HasValue)
                 return Math.Min(value1.Value, value2.Value);
 
-            return value1.HasValue ? value1 : value2;
+            return value1 ?? value2;
         }
 
         public static long? Max(this long? value1, long? value2)
@@ -55,7 +55,7 @@
             if (value1.HasValue && value2.HasValue)
                 return Math.Max(value1.Value, value2.Value);
 
-            return value1.HasValue ? value1 : value2;
+            return value1 ?? value2;
         }
 
         public static long? Min(this long? value1, long? value2)
@@ -66,7 +66,7 @@
             if (value1.HasValue && value2.HasValue)
                 return Math.Min(value1.Value, value2.Value);
 
-            return value1.HasValue ? value1 : value2;
+            return value1 ?? value2;
         }
 
         public static bool Overlap<T>(this T minA, T maxA, T minB, T maxB) where T : IComparable<T>

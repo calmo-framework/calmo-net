@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace System
@@ -8,6 +7,8 @@ namespace System
     {
         public static string[] Split(this string value, string separator)
         {
+            if (value == null) return new string[0];
+
             return value.Split(new[] { separator }, StringSplitOptions.None);
         }
 

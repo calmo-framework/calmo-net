@@ -4,12 +4,19 @@ using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using Calmo.Core;
 using Calmo.Core.Data;
 using Calmo.Core.ExceptionHandling;
 using Calmo.Core.Threading;
 using Calmo.Data.Configuration;
 using Dapper;
+
+#if NETCOREAPP
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+#else
+using Calmo.Core;
+using Calmo.Data.Properties;
+#endif
 
 namespace Calmo.Data
 {
@@ -18,16 +25,54 @@ namespace Calmo.Data
         private const int TOO_LONG_COMMANDTIMEOUT = 14400;
 
         private object _parameters;
+        private Dictionary<string, DbType> _output;
         private CommandType _commandType = CommandType.StoredProcedure;
         private bool _useLongTimeout;
         private bool _buffered = true;
         private string _connectionStringName;
         private int _customTimeout = -1;
+        private DynamicParameters _outputParameters;
+#if !NETCOREAPP
         private static readonly DataSection DataSection = CustomConfiguration.Settings.Data();
+#else
+        private static DataSection DataSection;
+        internal static IConfiguration Configuration;
+#endif
 
         public IDbConnectionFactory DbConnectionFactory { get; set; }
 
-        public RepositoryDbAccess() { }
+#if NETCOREAPP
+        public RepositoryDbAccess()
+        {
+            var settings = new DataSection();
+            Configuration.GetSection("calmoData").Bind(settings);
+            DataSection = settings;
+        }
+#endif
+
+#if !NETCOREAPP
+        public string GetConnectionString(string name, string providerTypeName, string providerName)
+        {
+            var connectionStringData = ConfigurationManager.ConnectionStrings[name];
+
+            if (connectionStringData == null)
+                throw new ConfigurationErrorsException($"A conexão \"{name}\" não foi encontrada no arquivo de configuração.");
+
+            if (!String.IsNullOrEmpty(connectionStringData.ProviderName))
+            {
+                if (!String.Equals(connectionStringData.ProviderName, providerTypeName, StringComparison.InvariantCultureIgnoreCase))
+                    throw new InvalidOperationException(String.Format(Messages.IncorrectProvider, connectionStringData.ProviderName, name, providerName));
+            }
+
+            return connectionStringData.ConnectionString;
+        }
+#else
+        public string GetConnectionString(string name)
+        {
+            return Configuration.GetConnectionString(name);
+
+        }
+#endif
 
         public RepositoryDbAccess UseConnection(string connectionStringName)
         {
@@ -55,6 +100,19 @@ namespace Calmo.Data
             return this;
         }
 
+        public RepositoryDbAccessWithOutput WithOutput(string name, DbType type)
+        {
+            if (_output == null)
+                _output = new Dictionary<string, DbType>();
+
+            if (_output.ContainsKey(name))
+                _output[name] = type;
+            else
+                _output.Add(name, type);
+
+            return new RepositoryDbAccessWithOutput(this);
+        }
+
         public RepositoryDbAccess UseLongTimeout()
         {
             _useLongTimeout = true;
@@ -63,7 +121,7 @@ namespace Calmo.Data
 
         public RepositoryDbAccess WithCustomTimeout(int timeout)
         {
-            if (timeout <= 0) throw new ConfigurationErrorsException("Invalid timeout");
+            if (timeout <= 0) throw new InvalidOperationException("Invalid timeout");
             _customTimeout = timeout;
             return this;
         }
@@ -111,7 +169,7 @@ namespace Calmo.Data
             if (_connectionStringName == null)
                 _connectionStringName = DataSection.DefaultConnectionString;
 
-            return this.DbConnectionFactory.GetDbConnection(_connectionStringName);
+            return this.DbConnectionFactory.GetDbConnection(_connectionStringName, this);
         }
 
         private bool ScopeIsActive => ThreadStorage.GetData<bool>(TransactionScope.ActiveScopeKey);
@@ -124,9 +182,29 @@ namespace Calmo.Data
             }
         }
 
-        #region List
+        private object GetParameters()
+        {
+            if (!_output.HasItems()) return _parameters;
 
-        protected IEnumerable<dynamic> List(string sql)
+            var parameters = new DynamicParameters();
+            parameters.AddDynamicParams(_parameters);
+            foreach (var item in _output)
+            {
+                parameters.Add(item.Key, null, item.Value, ParameterDirection.Output);
+            }
+
+            _outputParameters = parameters;
+            return parameters;
+        }
+
+        internal DynamicParameters GetOutputParameters()
+        {
+            return _outputParameters;
+        }
+
+#region List
+
+        public IEnumerable<dynamic> List(string sql)
         {
             Throw.IfArgumentNullOrEmpty(sql, nameof(sql));
 
@@ -136,7 +214,7 @@ namespace Calmo.Data
 
             try
             {
-                result = connection.Query(sql, _parameters,
+                result = connection.Query(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?) null),
@@ -163,7 +241,7 @@ namespace Calmo.Data
 
             try
             {
-                result = connection.Query<T>(sql, _parameters,
+                result = connection.Query<T>(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?) null),
@@ -191,7 +269,7 @@ namespace Calmo.Data
 
             try
             {
-                var reader = connection.QueryMultiple(sql, _parameters,
+                var reader = connection.QueryMultiple(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?) null),
@@ -222,7 +300,7 @@ namespace Calmo.Data
 
             try
             {
-                var reader = connection.QueryMultiple(sql, _parameters,
+                var reader = connection.QueryMultiple(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?) null),
@@ -255,7 +333,7 @@ namespace Calmo.Data
 
             try
             {
-                var reader = connection.QueryMultiple(sql, _parameters,
+                var reader = connection.QueryMultiple(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?) null),
@@ -276,9 +354,9 @@ namespace Calmo.Data
             return new Tuple<IEnumerable<T1>, IEnumerable<T2>, IEnumerable<T3>, IEnumerable<T4>>(result1, result2, result3, result4);
         }
 
-        #endregion
+#endregion
 
-        #region List Async
+#region List Async
 
         public async Task<IEnumerable<T>> ListAsync<T>(string sql)
         {
@@ -289,7 +367,7 @@ namespace Calmo.Data
 
             try
             {
-                result = await connection.QueryAsync<T>(sql, _parameters,
+                result = await connection.QueryAsync<T>(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?) null),
@@ -305,9 +383,9 @@ namespace Calmo.Data
             return result;
         }
 
-        #endregion
+#endregion
 
-        #region Get
+#region Get
 
         public T Get<T>(string sql)
         {
@@ -318,7 +396,7 @@ namespace Calmo.Data
 
             try
             {
-                result = connection.Query<T>(sql, _parameters,
+                result = connection.Query<T>(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?) null),
@@ -335,9 +413,9 @@ namespace Calmo.Data
             return result;
         }
 
-        #endregion
+#endregion
 
-        #region Get Async
+#region Get Async
 
         public async Task<T> GetAsync<T>(string sql)
         {
@@ -348,7 +426,7 @@ namespace Calmo.Data
 
             try
             {
-                var queryResult = await connection.QueryAsync<T>(sql, _parameters,
+                var queryResult = await connection.QueryAsync<T>(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?)null),
@@ -365,9 +443,9 @@ namespace Calmo.Data
             return result;
         }
 
-        #endregion
+#endregion
 
-        #region Execute
+#region Execute
 
         public T Execute<T>(string sql)
         {
@@ -377,7 +455,7 @@ namespace Calmo.Data
 
             try
             {
-                return connection.Query<T>(sql, _parameters,
+                return connection.Query<T>(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?) null),
@@ -400,7 +478,7 @@ namespace Calmo.Data
 
             try
             {
-                connection.Execute(sql, _parameters,
+                connection.Execute(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?)null),
@@ -414,9 +492,9 @@ namespace Calmo.Data
             }
         }
 
-        #endregion
+#endregion
 
-        #region Execute Async
+#region Execute Async
 
         public async Task<T> ExecuteAsync<T>(string sql)
         {
@@ -426,7 +504,7 @@ namespace Calmo.Data
 
             try
             {
-                var queryResult = await connection.QueryAsync<T>(sql, _parameters,
+                var queryResult = await connection.QueryAsync<T>(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?) null),
@@ -448,7 +526,7 @@ namespace Calmo.Data
 
             try
             {
-                await connection.ExecuteAsync(sql, _parameters,
+                await connection.ExecuteAsync(sql, GetParameters(),
                     commandTimeout: _customTimeout > 0
                         ? _customTimeout
                         : (_useLongTimeout ? TOO_LONG_COMMANDTIMEOUT : (int?) null),
@@ -462,9 +540,9 @@ namespace Calmo.Data
             }
         }
 
-        #endregion
+#endregion
 
-        #region Paginagion methods (in future)
+#region Paginagion methods (in future)
 
         //private const string SplitOnColumnName = "RowNumber";
 
@@ -501,6 +579,6 @@ namespace Calmo.Data
         //    return pageSize <= 0 ? 10 : pageSize;
         //}
 
-        #endregion
+#endregion
     }
 }

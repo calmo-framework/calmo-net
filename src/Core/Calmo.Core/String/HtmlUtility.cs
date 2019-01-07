@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 
@@ -15,7 +14,7 @@ namespace System
             Loose
         }
 
-        private static char[] _htmlEntityEndingChars = { ';', '&' };
+        private static readonly char[] HtmlEntityEndingChars = { ';', '&' };
         private static readonly UnicodeDecodingConformance _htmlDecodeConformance = UnicodeDecodingConformance.Auto;
 
         public static string HtmlDecode(string value)
@@ -77,7 +76,7 @@ namespace System
                 if (c != '&')
                     goto IL_1B6;
 
-                var num = value.IndexOfAny(HtmlUtility._htmlEntityEndingChars, i + 1);
+                var num = value.IndexOfAny(HtmlUtility.HtmlEntityEndingChars, i + 1);
                 if (num <= 0 || value[num] != ';')
                     goto IL_1B6;
 

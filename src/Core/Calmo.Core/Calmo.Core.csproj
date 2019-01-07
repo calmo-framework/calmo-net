@@ -3,7 +3,7 @@
   <Import Project="..\..\packages\NuGet.Packer.1.2.10\build\NuGet.Packer.props" Condition="Exists('..\..\packages\NuGet.Packer.1.2.10\build\NuGet.Packer.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <PatchVersion>3</PatchVersion>
+    <PatchVersion>8</PatchVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -44,8 +44,6 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
@@ -55,12 +53,17 @@
     <Compile Include="ArrayExtensions.cs" />
     <Compile Include="AsyncExtensions.cs" />
     <Compile Include="AsyncThreadCaller.cs" />
+    <Compile Include="Automation\RobotProcess.cs" />
+    <Compile Include="Automation\RobotProcessExecutionType.cs" />
+    <Compile Include="Automation\RobotProcessStatus.cs" />
     <Compile Include="CollectionsExtensions.cs" />
     <Compile Include="Collections\PagedList.cs" />
     <Compile Include="Collections\PagedListExtensions.cs" />
     <Compile Include="Configuration\CustomConfigurationCoreExtensions.cs" />
     <Compile Include="Emoji.cs" />
     <Compile Include="ExceptionHandling\DomainException.cs" />
+    <Compile Include="Net\Mail\MailSender.cs" />
+    <Compile Include="Net\NetworkHelper.cs" />
     <Compile Include="Properties\ConfigurationMessages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -77,7 +80,6 @@
     <Compile Include="Enum\DataKeyAttribute.cs" />
     <Compile Include="ExceptionHandling\ExceptionExtension.cs" />
     <Compile Include="ExceptionHandling\Throw.cs" />
-    <Compile Include="FileEx.cs" />
     <Compile Include="FileExtensions.cs" />
     <Compile Include="GeoLocalization\GeoPoint.cs" />
     <Compile Include="ImageExtensions.cs" />
@@ -108,6 +110,7 @@
     </Compile>
     <Compile Include="Validator\Documents\DocumentDefinition.cs" />
     <Compile Include="Validator\Documents\Brazil\BrazilianDocuments.cs" />
+    <Compile Include="Validator\Documents\DocumentValidationExtensions.cs" />
     <Compile Include="Validator\Formats\Brazil\BrazilianFormats.cs" />
     <Compile Include="Validator\Documents\Brazil\CPFDocumentDefinition.cs" />
     <Compile Include="Validator\Documents\Brazil\CNPJDocumentDefinition.cs" />
@@ -119,6 +122,7 @@
     <Compile Include="Validator\Formats\FormatDefinition.cs" />
     <Compile Include="Validator\Documents\DocumentValidation.cs" />
     <Compile Include="Validator\Formats\FormatValidation.cs" />
+    <Compile Include="Validator\Formats\FormatValidationExtensions.cs" />
     <Compile Include="Validator\Formats\US\USFormats.cs" />
     <Compile Include="Validator\Formats\US\PhoneFormatDefinition.cs" />
     <Compile Include="Validator\ValidationItem.cs" />

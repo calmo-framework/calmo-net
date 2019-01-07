@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <PackageId>Calmo.Data.DotNetCore</PackageId>
+    <Product>Calmo.Data.DotNetCore</Product>
+    <Authors>Calmô! Community</Authors>
+    <Copyright>Copyright © Calmô! 2018</Copyright>
+    <PackageLicenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/calmo-framework/calmo-net/</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/calmo-framework/calmo-net/master/art/icon.png</PackageIconUrl>
+    <Description>Dapper-based wrapper to simplify data access.</Description>
+    <PackageTags>.net core data dapper utility helpers</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\..\Data\Calmo.Data\Configuration\DataSection.cs" Link="Configuration\DataSection.cs" />
+    <Compile Include="..\..\..\Data\Calmo.Data\IDbConnectionFactory.cs" Link="IDbConnectionFactory.cs" />
+    <Compile Include="..\..\..\Data\Calmo.Data\Pagination.cs" Link="Pagination.cs" />
+    <Compile Include="..\..\..\Data\Calmo.Data\Repository.cs" Link="Repository.cs" />
+    <Compile Include="..\..\..\Data\Calmo.Data\RepositoryDataAccess.cs" Link="RepositoryDataAccess.cs" />
+    <Compile Include="..\..\..\Data\Calmo.Data\RepositoryDbAccess.cs" Link="RepositoryDbAccess.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="1.50.5" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Calmo.Core\Calmo.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Configuration\" />
+  </ItemGroup>
+
+</Project>

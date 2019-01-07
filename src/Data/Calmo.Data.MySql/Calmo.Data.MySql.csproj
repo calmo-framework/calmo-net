@@ -3,7 +3,7 @@
   <Import Project="..\..\packages\NuGet.Packer.1.2.10\build\NuGet.Packer.props" Condition="Exists('..\..\packages\NuGet.Packer.1.2.10\build\NuGet.Packer.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <PatchVersion>2</PatchVersion>
+    <PatchVersion>3</PatchVersion>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
@@ -58,7 +58,9 @@
     <Compile Include="RepositoryDataAccessExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Calmo.Data.MySql.nuspec" />
+    <None Include="Calmo.Data.MySql.nuspec">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
