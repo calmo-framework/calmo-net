@@ -1,15 +1,15 @@
 resources:
 - trigger
-  - master
-- pool:
-  vmImage: 'VS2017-Win2016'
-  variables:
+  master
+- variables:
     solution: 'src/calmo.framework.sln'
     buildPlatform: 'Any CPU'
     buildConfiguration: 'Debug'
 
 jobs:
   - job: Phase_1
+    pool:
+      vmImage: 'VS2017-Win2016'
     displayName: 'Build default .NET Solution'
     condition: succeeded()
     steps:
