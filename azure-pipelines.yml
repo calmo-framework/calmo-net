@@ -45,7 +45,7 @@ jobs:
       displayName: Restore
       inputs:
         command: restore
-        projects: '$(solution)'
+        projects: 'src/netcore/**/*.csproj'
 
     - task: DotNetCoreCLI@2
       displayName: Build
