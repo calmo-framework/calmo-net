@@ -26,8 +26,11 @@ jobs:
       inputs:
         platform: '$(buildPlatform)'
         configuration: '$(buildConfiguration)'
-  
+
+#-------------------------------------------------------
+
   - job: Run_NET_Core
+    displayName: 'Build .NET Core Solution'
     variables:
         solution: 'src/calmo.netcore.framework.sln'
         buildPlatform: 'Any CPU'
@@ -42,18 +45,10 @@ jobs:
       displayName: Restore
       inputs:
         command: restore
-        projects: '$(Parameters.RestoreBuildProjects)'
+        projects: '$(solution)'
 
     - task: DotNetCoreCLI@2
       displayName: Build
       inputs:
-        projects: '$(Parameters.RestoreBuildProjects)'
+        projects: '$(solution)'
         arguments: '--configuration $(BuildConfiguration)'
-
-    - task: DotNetCoreCLI@2
-      displayName: Test
-      inputs:
-        command: test
-        projects: '$(Parameters.TestProjects)'
-        arguments: '--configuration $(BuildConfiguration)'
-
