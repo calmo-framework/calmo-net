@@ -1,11 +1,9 @@
-resources:
-- variables:
-    solution: 'src/calmo.framework.sln'
-    buildPlatform: 'Any CPU'
-    buildConfiguration: 'Debug'
-
 jobs:
   - job: Phase_1
+    variables:
+      solution: 'src/calmo.framework.sln'
+      buildPlatform: 'Any CPU'
+      buildConfiguration: 'Debug'
     pool:
       vmImage: 'VS2017-Win2016'
     displayName: 'Build default .NET Solution'
@@ -28,3 +26,4 @@ jobs:
       inputs:
         platform: '$(buildPlatform)'
         configuration: '$(buildConfiguration)'
+
