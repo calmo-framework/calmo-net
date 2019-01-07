@@ -117,13 +117,13 @@ namespace Calmo.WindowsServices.Robot
                     }
                 }
                 else
-                    throw new FileNotFoundException("O Arquivo 'RobotConfiguration.xml' não foi encontrado na mesma pasta do executável do serviço.");
+                    throw new FileNotFoundException("The file 'RobotConfiguration.xml' was not fount in the same directory as the service .exe file.");
 
                 if (String.IsNullOrWhiteSpace(_configuration.ServiceName))
-                    _configuration.ServiceName = "Executador automático de processos";
+                    _configuration.ServiceName = "Automatic service execution service";
 
                 if (logMethod != null)
-                    logMethod("Configurações do serviço atualizadas");
+                    logMethod("Service configurations updated");
 
                 return _configuration;
             }

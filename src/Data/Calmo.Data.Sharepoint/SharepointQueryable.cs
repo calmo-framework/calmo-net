@@ -65,7 +65,7 @@ namespace Calmo.Data.Sharepoint
                 var d = lambda.Compile();
                 var value = d.DynamicInvoke(new object[1]);
 
-                if (expression.Object == null) throw new Exception("Cláusula inválida.");
+                if (expression.Object == null) throw new Exception("Invalid clause.");
 
                 var propertyInfo = (PropertyInfo)((MemberExpression)expression.Object).Member;
                 var itemType = propertyInfo.PropertyType;
@@ -204,10 +204,10 @@ namespace Calmo.Data.Sharepoint
         public IEnumerable<T> Retrieve()
         {
             if (String.IsNullOrWhiteSpace(this.ListName))
-                throw new Exception("Não foi selecionada uma lista para retornar os itens.");
+                throw new Exception("The list name was not provided.");
 
             if (!this.FieldsMapping.HasItems())
-                throw new Exception("Não foi definido o mapeamento de campos de retorno.");
+                throw new Exception("The field mapping is empty.");
 
             var clientContext = RepositorySharepointAccess.GetContext();
             var oList = clientContext.Web.Lists.GetByTitle(this.ListName);
