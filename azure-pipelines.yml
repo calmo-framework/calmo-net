@@ -50,5 +50,5 @@ jobs:
     - task: DotNetCoreCLI@2
       displayName: Build
       inputs:
-        projects: 'src/**/*.csproj'
+        projects: 'src/netcore/**/*.csproj'
         arguments: '--configuration $(BuildConfiguration)'
