@@ -1,29 +1,32 @@
-trigger:
-- master
-
-pool:
+resources:
+- trigger
+  - master
+- pool:
   vmImage: 'VS2017-Win2016'
+  variables:
+    solution: 'src/calmo.framework.sln'
+    buildPlatform: 'Any CPU'
+    buildConfiguration: 'Debug'
 
-variables:
-  solution: 'src/calmo.framework.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Debug'
+jobs:
+  - job: Phase_1
+    displayName: 'Build default .NET Solution'
+    condition: succeeded()
+    steps:
+    - task: NuGetToolInstaller@0
 
-steps:
-- task: NuGetToolInstaller@0
+    - task: NuGetCommand@2
+      inputs:
+        command: restore
+        restoreSolution: '$(solution)'
 
-- task: NuGetCommand@2
-  inputs:
-    command: restore
-    restoreSolution: '$(solution)'
+    - task: VSBuild@1
+      inputs:
+        solution: '$(solution)'
+        platform: '$(buildPlatform)'
+        configuration: '$(buildConfiguration)'
 
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
-- task: VSTest@2
-  inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    - task: VSTest@2
+      inputs:
+        platform: '$(buildPlatform)'
+        configuration: '$(buildConfiguration)'
