@@ -29,7 +29,7 @@ namespace System
 			if (int.TryParse(value, out d))
 				return d;
 
-			throw new InvalidCastException("Valor inválido.");
+			throw new InvalidCastException("Invalid int string.");
 		}
 
         public static int? ToIntNullable(this string value)
@@ -44,7 +44,7 @@ namespace System
 
         #region Decimal
 
-        public static decimal? ToDecimal(this string value)
+        public static decimal? ToDecimal(this string value, string cultureInfo = "pt-BR")
         {
             if (String.IsNullOrWhiteSpace(value))
             {
@@ -53,12 +53,12 @@ namespace System
 
             decimal d;
 
-            if (decimal.TryParse(value, NumberStyles.Any, new CultureInfo("pt-BR"), out d))
+            if (decimal.TryParse(value, NumberStyles.Any, new CultureInfo(cultureInfo), out d))
             {
                 return d;
             }
 
-            throw new InvalidCastException("Valor inválido.");
+            throw new InvalidCastException("Invalid decimal string.");
         }
 
         public static decimal ToDecimal(this string value, decimal defaultValue)
@@ -277,7 +277,7 @@ namespace System
             if (isUSValid && DateTime.TryParse(value, new CultureInfo("en-US"), DateTimeStyles.None, out data))
                 return data;
 
-            throw new InvalidOperationException("Data inválida.");
+            throw new InvalidOperationException("Invalid date string.");
         }
 
         public static DateTime ToDateTime(this string value, DateTime defaultValue)
@@ -353,7 +353,7 @@ namespace System
             if (long.TryParse(value, out d))
                 return d;
 
-            throw new InvalidCastException("Valor inválido.");
+            throw new InvalidCastException("invalid long string.");
         }
 
         public static long? ToNullableLong(this string valor)
