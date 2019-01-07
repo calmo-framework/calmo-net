@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>Calmo.Core</id>
-    <version>1.0.8</version>
+    <version>1.0.9</version>
     <description>Core utility functions for .Net projects.</description>
     <tags>.net utility helpers</tags>
     
@@ -15,7 +15,7 @@
 
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
 
-    <releaseNotes>Validation improvements</releaseNotes>
+    <releaseNotes>String extensions improvements</releaseNotes>
   </metadata>
 
   <files>

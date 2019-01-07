@@ -20,6 +20,7 @@
     <Compile Include="..\..\..\Data\Calmo.Data\Repository.cs" Link="Repository.cs" />
     <Compile Include="..\..\..\Data\Calmo.Data\RepositoryDataAccess.cs" Link="RepositoryDataAccess.cs" />
     <Compile Include="..\..\..\Data\Calmo.Data\RepositoryDbAccess.cs" Link="RepositoryDbAccess.cs" />
+    <Compile Include="..\..\..\Data\Calmo.Data\RepositoryDbAccessWithOutput.cs" Link="RepositoryDbAccessWithOutput.cs" />
   </ItemGroup>
 
   <ItemGroup>
