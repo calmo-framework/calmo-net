@@ -1,6 +1,4 @@
 resources:
-- trigger:
-   - master
 - variables:
     solution: 'src/calmo.framework.sln'
     buildPlatform: 'Any CPU'
