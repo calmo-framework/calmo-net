@@ -10,5 +10,9 @@ namespace Calmo.Data
         {
             RepositoryDbAccess.Configuration = configuration;
         }
+        public static void AddCalmoConfiguration(IConfiguration configuration)
+        {
+            RepositoryDbAccess.Configuration = configuration;
+        }
     }
 }
