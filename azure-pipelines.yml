@@ -1,0 +1,23 @@
+trigger:
+- master
+
+pool:
+  vmImage: macos-10.13
+
+variables:
+  solution: 'src/calmo.xamarin.framework.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Debug'
+
+steps:
+- task: NuGetToolInstaller@0
+
+- task: NuGetCommand@2
+  inputs:
+    solution: '$(solution)'
+
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
