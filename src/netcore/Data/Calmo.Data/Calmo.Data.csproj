@@ -11,6 +11,7 @@
     <PackageIconUrl>https://raw.githubusercontent.com/calmo-framework/calmo-net/master/art/icon.png</PackageIconUrl>
     <Description>Dapper-based wrapper to simplify data access.</Description>
     <PackageTags>.net core data dapper utility helpers</PackageTags>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
