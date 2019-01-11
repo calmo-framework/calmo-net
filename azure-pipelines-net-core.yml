@@ -1,8 +1,3 @@
-# ASP.NET Core
-# Build and test ASP.NET Core projects targeting .NET Core.
-# Add steps that run tests, create a NuGet package, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
-
 trigger:
 - master
 
@@ -15,18 +10,17 @@ variables:
   buildConfiguration: 'Debug'
 
   steps:
-  # - task: DotNetCoreInstaller@0
-  #   displayName: 'Use .NET Core sdk 2.2.101'
-  #   inputs:
-  #     version: 2.2.101
-
-  - task: DotNetCoreCLI@0
+  - task: DotNetCoreInstaller@0
+    displayName: 'Use .NET Core sdk 2.2.101'
+    inputs:
+      version: 2.2.101
+  - task: DotNetCoreCLI@2
     displayName: Restore
     inputs:
       command: restore
       projects: 'src/netcore/**/*.csproj'
-
-  - task: DotNetCoreCLI@0
+      
+  - task: DotNetCoreCLI@2
     displayName: Build
     inputs:
       projects: 'src/netcore/**/*.csproj'
