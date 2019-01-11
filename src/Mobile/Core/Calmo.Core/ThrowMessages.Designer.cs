@@ -8,9 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Calmo.Xamarin.Core.Properties {
+namespace Calmo.Xamarin.Core {
     using System;
-    using System.Reflection;
     
     
     /// <summary>
@@ -40,7 +39,7 @@ namespace Calmo.Xamarin.Core.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Calmo.Xamarin.Core.Properties.ThrowMessages", typeof(ThrowMessages).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Calmo.Xamarin.Core.ThrowMessages", typeof(ThrowMessages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

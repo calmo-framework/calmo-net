@@ -211,8 +211,10 @@ namespace System
             if (propInfo == null)
                 throw new ArgumentException($"Expression '{propertyLambda}' refers to a field, not a property.");
 
+#if !__MOBILE__
             if (type != propInfo.ReflectedType && !type.IsSubclassOf(propInfo.ReflectedType))
                 throw new ArgumentException($"Expression '{propertyLambda}' refers to a property that is not from type {type}.");
+#endif
 
             return propInfo;
         }
