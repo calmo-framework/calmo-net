@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Calmo.Data.Forms.iOS")]
+[assembly: AssemblyTitle("Calmo.Forms.iOS")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Calmo.Data.Forms.iOS")]
+[assembly: AssemblyProduct("Calmo.Forms.iOS")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("85845c29-61a2-4263-bd37-3e9e099efb70")]
+[assembly: Guid("50c7b8c9-e664-45af-b88e-0c9b8b9c1be1")]
 
 // Version information for an assembly consists of the following four values:
 //
