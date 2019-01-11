@@ -2,15 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageId>Calmo.Xamarin.Forms</PackageId>
+    <PackageId>Calmo.Xamarin.Forms.Data</PackageId>
     <Authors>Calmô! Community</Authors>
-    <Product>Calmo.Xamarin.Forms</Product>
+    <Product>Calmo.Xamarin.Forms.Data</Product>
     <Copyright>Copyright © Calmô! 2019</Copyright>
     <PackageLicenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/calmo-framework/calmo-net/</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/calmo-framework/calmo-net/master/art/icon.png</PackageIconUrl>
-    <PackageTags>.net utility helpers xamarin forms</PackageTags>
-    <Description>Utility functions for Xamarin.Forms projects.</Description>
+    <PackageTags>data sqlite api .net utility helpers xamarin forms</PackageTags>
+    <Description>Library to simplify data access in Xamarin.Forms projects.</Description>
     <PackageVersion>1.0.0</PackageVersion>
   </PropertyGroup>
 
@@ -20,14 +20,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Flurl.Http" Version="1.1.2" />
     <PackageReference Include="NuGet.Build.Packaging" Version="0.2.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="PCLAppConfig" Version="1.0.1" />
+    <PackageReference Include="sqlite-net-pcl" Version="1.5.231" />
     <PackageReference Include="Xamarin.Forms" Version="3.4.0.1008975" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\Calmo.Core\Calmo.Core.csproj" />
+    <ProjectReference Include="..\..\..\Core\Calmo.Core\Calmo.Core.csproj" />
   </ItemGroup>
 </Project>

@@ -5,23 +5,23 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{CEDCD885-8F0D-48AB-B251-746BF77AFFB0}</ProjectGuid>
+    <ProjectGuid>{A7DB51EF-92AB-499B-81E3-05C3E4A9987D}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{9ef11e43-1701-4396-8835-8392d57abb70}</TemplateGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Calmo.Forms.Droid</RootNamespace>
-    <AssemblyName>Calmo.Forms.Droid</AssemblyName>
+    <RootNamespace>Calmo.Forms.Data.Droid</RootNamespace>
+    <AssemblyName>Calmo.Forms.Data.Droid</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
-    <PackageId>Calmo.Xamarin.Forms.Droid</PackageId>
+    <PackageId>Calmo.Xamarin.Forms.Data.Droid</PackageId>
     <PackageVersion>1.0.0</PackageVersion>
-    <Description>Utility functions for Xamarin.Forms Android projects.</Description>
+    <Description>Library to simplify data access in Xamarin.Forms Android projects.</Description>
     <Authors>Calmô! Community</Authors>
-    <Title>Calmo.Xamarin.Forms.Droid</Title>
+    <Title>Calmo.Xamarin.Forms.Data.Droid</Title>
     <Copyright>Copyright © Calmô! 2019</Copyright>
     <Owners>Calmô! Community</Owners>
     <PackageProjectUrl>https://github.com/calmo-framework/calmo-net/</PackageProjectUrl>
@@ -55,15 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\FontAwesomeIcon\FontAwesomeIconRenderer.cs" />
-    <Compile Include="Controls\MaterialButton\MaterialButtonRenderer.cs" />
-    <Compile Include="Controls\Toast\Toast.cs" />
-    <Compile Include="Controls\Toast\ToastFluent.cs" />
-    <Compile Include="Forms.cs" />
-    <Compile Include="PlatformFeatures.cs" />
+    <Compile Include="DataInitializer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServicesPermissions.cs" />
+    <Compile Include="SQLiteDataStorage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -118,9 +113,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Calmo.Forms\Calmo.Forms.csproj">
-      <Project>{e3c882e7-ccc6-4b18-9baa-ab1d772b1b5e}</Project>
-      <Name>Calmo.Forms</Name>
+    <ProjectReference Include="..\Calmo.Forms.Data\Calmo.Forms.Data.csproj">
+      <Project>{79ad24c8-66a2-40b2-8f64-c80736f2c715}</Project>
+      <Name>Calmo.Forms.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
