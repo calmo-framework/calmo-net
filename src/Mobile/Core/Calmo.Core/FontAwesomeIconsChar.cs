@@ -1,6 +1,6 @@
 ﻿namespace Calmo.Core
 {
-    public class FontAwesomeIconsChar
+    public class FontAwesomeIconsChar 
     {
         public static string AddressBook = "\uf2b9";
         public static string AddressBookO = "\uf2ba";

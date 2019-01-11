@@ -3,6 +3,9 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
+#if __MOBILE__
+using System.Reflection;
+#endif
 
 namespace System
 {

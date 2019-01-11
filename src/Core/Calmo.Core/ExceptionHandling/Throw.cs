@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Globalization;
 
-#if !NETCOREAPP
+#if !NETCOREAPP && !__MOBILE__
 using Calmo.Core.Properties;
+#endif
+
+#if !NETCOREAPP && __MOBILE__
+using Calmo.Xamarin.Core;
 #endif
 
 namespace Calmo.Core.ExceptionHandling
