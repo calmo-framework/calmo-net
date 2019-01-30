@@ -49,11 +49,11 @@ You can validate documents and string formats in general (using the framework ru
 
 ```
 var validation = model.Validate()
-                .Using()
-                .Rule(p => p.CPF, FormatValidation.Brazil.CPF)
-                .Rule(p => p.CPF, DocumentValidation.Brazil.CPF)
-                .Rule(p => p.Child, child => child != null)
+                    .Using()
+                    .Rule(p => p.CPF, FormatValidation.Brazil.CPF)
+                    .Rule(p => p.CPF, DocumentValidation.Brazil.CPF)
+                    .Rule(p => p.Child, child => child != null)
                     .BreakIfIsInvalid()
-                .Rule(p => p.Child, child => !string.IsNullOrEmpty(child.Name));
+                    .Rule(p => p.Child, child => !string.IsNullOrEmpty(child.Name));
 ```
 Note: You can create break points in the validation chain using the 'BreakIfIsInvalid' to stop the validation and return only the errors generated up to that point.
