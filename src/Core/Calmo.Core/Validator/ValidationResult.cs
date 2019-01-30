@@ -30,7 +30,15 @@ namespace Calmo.Core.Validator
 
         public IEnumerable<TModel> Values { get; }
 
-        public ValidationResult<TModel> Rule<TProperty>(Expression<Func<TModel, TProperty>> property, bool rule, string message = null)
+		/// <summary>
+		/// Fixed rule value validation method
+		/// </summary>
+		/// <typeparam name="TProperty">Property type being validated</typeparam>
+		/// <param name="property">Property value</param>
+		/// <param name="rule">Rule result</param>
+		/// <param name="message">Error message</param>
+		/// <returns>Validation context</returns>
+		public ValidationResult<TModel> Rule<TProperty>(Expression<Func<TModel, TProperty>> property, bool rule, string message = null)
         {
             if (this._breakIfIsInvalid && !this.Success)
                 return this;
@@ -42,7 +50,14 @@ namespace Calmo.Core.Validator
             return this;
         }
 
-        public ValidationResult<TModel> Rule(string ruleName, Func<TModel, bool> rule, string message = null)
+		/// <summary>
+		/// General rule value validation method
+		/// </summary>
+		/// <param name="ruleName">Rule name</param>
+		/// <param name="rule">Validation function, must return true if valid</param>
+		/// <param name="message">Error message</param>
+		/// <returns>Validation context</returns>
+		public ValidationResult<TModel> Rule(string ruleName, Func<TModel, bool> rule, string message = null)
         {
             if (this._breakIfIsInvalid && !this.Success)
                 return this;
@@ -59,7 +74,15 @@ namespace Calmo.Core.Validator
             return this;
         }
 
-        public ValidationResult<TModel> Rule<TProperty>(Expression<Func<TModel, TProperty>> property, Func<TProperty, bool> rule, string message = null)
+		/// <summary>
+		/// Class Property Validation Rule Method
+		/// </summary>
+		/// <typeparam name="TProperty">Property type being validated</typeparam>
+		/// <param name="property">Property value</param>
+		/// <param name="rule">Validation against the TProperty, must return true if valid</param>
+		/// <param name="message">Error message</param>
+		/// <returns>Validation context</returns>
+		public ValidationResult<TModel> Rule<TProperty>(Expression<Func<TModel, TProperty>> property, Func<TProperty, bool> rule, string message = null)
         {
             if (this._breakIfIsInvalid && !this.Success)
                 return this;
@@ -79,7 +102,14 @@ namespace Calmo.Core.Validator
             return this;
         }
 
-        public ValidationResult<TModel> Rule(Expression<Func<TModel, string>> property, FormatDefinition rule, string message = null)
+		/// <summary>
+		/// Class String Property Validation Rule Method
+		/// </summary>
+		/// <param name="property">String property being validated</param>
+		/// <param name="rule">String format rule definition (Regex) being used</param>
+		/// <param name="message">Error message</param>
+		/// <returns>Validation context</returns>
+		public ValidationResult<TModel> Rule(Expression<Func<TModel, string>> property, FormatDefinition rule, string message = null)
         {
             if (this._breakIfIsInvalid && !this.Success)
                 return this;
@@ -99,7 +129,14 @@ namespace Calmo.Core.Validator
             return this;
         }
 
-        public ValidationResult<TModel> Rule(Expression<Func<TModel, string>> property, DocumentDefinition rule, string message = null)
+		/// <summary>
+		/// Document format/rules validation method
+		/// </summary>
+		/// <param name="property">String property being validated</param>
+		/// <param name="rule">DocumentDefition rule being used</param>
+		/// <param name="message">ErrorMessage</param>
+		/// <returns>Validation context</returns>
+		public ValidationResult<TModel> Rule(Expression<Func<TModel, string>> property, DocumentDefinition rule, string message = null)
         {
             if (this._breakIfIsInvalid && !this.Success)
                 return this;
@@ -119,6 +156,10 @@ namespace Calmo.Core.Validator
             return this;
         }
 
+		/// <summary>
+		/// Inform to the validation context if the validation must be stopped when an error occur
+		/// </summary>
+		/// <returns>Validation context</returns>
         public ValidationResult<TModel> BreakIfIsInvalid()
         {
             this._breakIfIsInvalid = true;
@@ -126,12 +167,21 @@ namespace Calmo.Core.Validator
             return this;
         }
 
+		/// <summary>
+		/// Throw an Exception if the validation fails
+		/// </summary>
+		/// <param name="separator">String separator between error messages</param>
         public void ThrowOnFail(string separator = null)
         {
             ThrowOnFail<Exception>(separator);
         }
 
-        public void ThrowOnFail<TException>(string separator = null) where TException : Exception
+		/// <summary>
+		/// Throw a custom exception type if the validation fails
+		/// </summary>
+		/// <typeparam name="TException">Exception type to be throw</typeparam>
+		/// <param name="separator">String separator between error messages</param>
+		public void ThrowOnFail<TException>(string separator = null) where TException : Exception
         {
             if (this.Success) return;
 
@@ -144,9 +194,17 @@ namespace Calmo.Core.Validator
             throw exception;
         }
 
+		/// <summary>
+		/// Indicates if the validation has no errors
+		/// </summary>
         public bool Success => this._errors.Count == 0;
 
-        public string GetSummary(string separator = null)
+		/// <summary>
+		/// Get all the errors messages in one string
+		/// </summary>
+		/// <param name="separator">String separator between error messages</param>
+		/// <returns>All the error messages concatenated using the separator provided</returns>
+		public string GetSummary(string separator = null)
         {
             if (this.Success) return string.Empty;
 
@@ -154,6 +212,10 @@ namespace Calmo.Core.Validator
             return String.Join(sep, this._errors.Select(e => e.Message));
         }
 
+		/// <summary>
+		/// Create a json mapping the properties validaded and the validation errors
+		/// </summary>
+		/// <returns>JSON array of Property/Message</returns>
         public IEnumerable<object> GetJson()
         {
             return this._errors.Select(e => new {e.Property, e.Message });
@@ -163,8 +225,7 @@ namespace Calmo.Core.Validator
         {
             member = null;
 
-            var memberExpression = property.Body as MemberExpression;
-            if (memberExpression == null) return false;
+	        if (!(property.Body is MemberExpression memberExpression)) return false;
 
             member = memberExpression.Member;
             return true;

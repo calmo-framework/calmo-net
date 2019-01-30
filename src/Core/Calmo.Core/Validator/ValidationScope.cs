@@ -2,6 +2,10 @@
 
 namespace Calmo.Core.Validator
 {
+	/// <summary>
+	/// Sarting class of a validation context
+	/// </summary>
+	/// <typeparam name="TModel"></typeparam>
     public class ValidationScope<TModel>
     {
         private readonly IEnumerable<TModel> _values;
@@ -16,6 +20,10 @@ namespace Calmo.Core.Validator
             _values = models;
         }
 
+		/// <summary>
+		/// Creates a new ValidationResult (With a validation rules list)
+		/// </summary>
+		/// <returns>New validation result for a given model.</returns>
         public ValidationResult<TModel> Using()
         {
             return new ValidationResult<TModel>(_values);
