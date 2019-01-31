@@ -17,3 +17,4 @@ Just install the modules you want to use via NuGet :)
 ## Documentation (Work in progress)
 
 * [Validation](docs/validation.md)
+* [Transaction Scope](docs/transaction-scope.md)
