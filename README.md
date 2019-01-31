@@ -18,3 +18,4 @@ Just install the modules you want to use via NuGet :)
 
 * [Validation](docs/validation.md)
 * [Transaction Scope](docs/transaction-scope.md)
+* [Captcha](docs/captcha.md)
