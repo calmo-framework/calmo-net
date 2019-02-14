@@ -32,6 +32,8 @@ namespace Calmo.Data
         private string _connectionStringName;
         private int _customTimeout = -1;
         private DynamicParameters _outputParameters;
+        internal static string ForcedConnectionString;
+
 #if !NETCOREAPP
         private static readonly DataSection DataSection = CustomConfiguration.Settings.Data();
 #else
@@ -69,8 +71,10 @@ namespace Calmo.Data
 #else
         public string GetConnectionString(string name)
         {
-            return Configuration.GetConnectionString(name);
+            if (string.IsNullOrWhiteSpace(ForcedConnectionString))
+                return ForcedConnectionString;
 
+            return Configuration.GetConnectionString(name);
         }
 #endif
 
