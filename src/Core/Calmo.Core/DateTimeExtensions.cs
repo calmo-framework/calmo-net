@@ -5,16 +5,18 @@ namespace System
 {
     public static class DateTimeExtensions
     {
-        public static string GetMonthName(this DateTime date)
+        public static string GetMonthName(this DateTime date, CultureInfo culture = null)
         {
-            var culture = new CultureInfo("pt-BR");
+	        if (culture == null) culture = CultureInfo.CurrentCulture;
+			
 
             return culture.DateTimeFormat.GetMonthName(date.Month);
         }
 
-        public static string GetAbbreviatedMonthName(this DateTime date)
-        {
-            var culture = new CultureInfo("pt-BR");
+        public static string GetAbbreviatedMonthName(this DateTime date, CultureInfo culture = null)
+		{
+			if (culture == null) culture = CultureInfo.CurrentCulture;
+            
 
 #if !__MOBILE__
             return culture.DateTimeFormat.GetAbbreviatedMonthName(date.Month).ToTitleCase();
@@ -23,9 +25,17 @@ namespace System
 #endif
         }
 
-        public static string GetDayName(this DateTime date)
-        {
-            return date.DayOfWeek.GetDayName(new CultureInfo("pt-BR"));
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="date"></param>
+		/// <param name="culture"></param>
+		/// <returns></returns>
+        public static string GetDayName(this DateTime date, CultureInfo culture = null)
+		{
+			if (culture == null) culture = CultureInfo.CurrentCulture;
+
+			return date.DayOfWeek.GetDayName(culture);
         }
 
         public static IEnumerable<DateTime> GetEarlierDates(this DateTime initialDate, int interval)
