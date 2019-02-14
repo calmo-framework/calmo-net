@@ -71,7 +71,7 @@ namespace Calmo.Data
 #else
         public string GetConnectionString(string name)
         {
-            if (string.IsNullOrWhiteSpace(ForcedConnectionString))
+            if (!string.IsNullOrWhiteSpace(ForcedConnectionString))
                 return ForcedConnectionString;
 
             return Configuration.GetConnectionString(name);
