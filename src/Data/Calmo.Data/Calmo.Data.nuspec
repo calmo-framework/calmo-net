@@ -2,12 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>Calmo.Data</id>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <description>Dapper-based wrapper to simplify data access.</description>
     <tags>.net utility helpers</tags>
 
     <dependencies>
-      <dependency id="Calmo.Core" version="1.0.2" />
+      <dependency id="Calmo.Core" version="1.1.0" />
       <dependency id="Dapper" version="1.50.5" />
     </dependencies>
 
@@ -24,6 +24,6 @@
   </metadata>
 
   <files>
-    <file src="Calmo.Data.dll" target="lib\net46\" />
+    <file src="bin/release/Calmo.Data.dll" target="lib\net46\" />
   </files>
 </package>
