@@ -14,5 +14,10 @@ namespace Calmo.Data
         {
             RepositoryDbAccess.Configuration = configuration;
         }
+
+        public static void AddCalmoConnectionString(string connection)
+        {
+            RepositoryDbAccess.ForcedConnectionString = connection;
+        }
     }
 }
