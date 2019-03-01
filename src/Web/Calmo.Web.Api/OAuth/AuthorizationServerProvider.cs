@@ -66,14 +66,14 @@ namespace Calmo.Web.Api.OAuth
 
                 if (String.IsNullOrWhiteSpace(username))
                 {
-                    var message = this._config.MessagesConfig.CustomMessages[BasicAuthResult.UserOrPasswordEmpty.ToString()];
+                    var message = this._config.MessagesConfig.CustomMessages[AuthResult.UserOrPasswordEmpty];
                     context.SetError("invalid_grant", message);
                     return;
                 }
 
                 if (!this._config.IsWindowsAuthentication && String.IsNullOrWhiteSpace(password))
                 {
-                    var message = this._config.MessagesConfig.CustomMessages[BasicAuthResult.UserOrPasswordEmpty.ToString()];
+                    var message = this._config.MessagesConfig.CustomMessages[AuthResult.UserOrPasswordEmpty];
                     context.SetError("invalid_grant", message);
                     return;
                 }
@@ -82,14 +82,14 @@ namespace Calmo.Web.Api.OAuth
                 var authResult = await this._authenticator.Authenticate(authenticationArgs);
                 context = authenticationArgs.Context;
 
-                if (authResult.In(BasicAuthResult.Unauthorized.ToString(), BasicAuthResult.UserExpired.ToString(), BasicAuthResult.PasswordExpired.ToString()))
+                if (authResult.In(AuthResult.Unauthorized, AuthResult.UserExpired, AuthResult.PasswordExpired))
                 {
                     var message = this._config.MessagesConfig.CustomMessages[authResult];
                     context.SetError("invalid_grant", message);
                     return;
                 }
 
-	            if (authResult != BasicAuthResult.Success.ToString())
+	            if (authResult != AuthResult.Success)
 	            {
 		            var message = this._config.MessagesConfig.CustomMessages[authResult];
 		            context.SetError("invalid_grant", message);

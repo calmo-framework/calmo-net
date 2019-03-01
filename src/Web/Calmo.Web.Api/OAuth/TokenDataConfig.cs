@@ -26,29 +26,19 @@ namespace Calmo.Web.Api.OAuth
 
 	public class MessagesConfig
 	{
-		internal Dictionary<string, string> CustomMessages = new Dictionary<string, string>
+		internal Dictionary<AuthResult, string> CustomMessages = new Dictionary<AuthResult, string>
 		{
-			{BasicAuthResult.Success.ToString(), "Access granted."},
-			{BasicAuthResult.Unauthorized.ToString(), "Username/password is invalid or your account is de-activated."},
-			{BasicAuthResult.PasswordExpired.ToString(), "Password expired."},
-			{BasicAuthResult.UserExpired.ToString(), "Username/password is invalid or your account is de-activated."},
-			{BasicAuthResult.UserOrPasswordEmpty.ToString(), "Username and password cannot be empty."}
+			{AuthResult.Success, "Access granted."},
+			{AuthResult.Unauthorized, "Username/password is invalid or your account is de-activated."},
+			{AuthResult.PasswordExpired, "Password expired."},
+			{AuthResult.UserExpired, "Username/password is invalid or your account is de-activated."},
+			{AuthResult.UserOrPasswordEmpty, "Username and password cannot be empty."},
+			{AuthResult.NotRegistered, "User not registered."}
 		};
 
-		public MessagesConfig Set(BasicAuthResult basicAuthResult, string message)
+		public MessagesConfig Set(AuthResult authResult, string message)
 		{
-			this.CustomMessages[basicAuthResult.ToString()] = message;
-
-			return this;
-		}
-
-		public MessagesConfig Set(string authResult, string message)
-		{
-			if (CustomMessages.ContainsKey(authResult))
-				this.CustomMessages[authResult] = message;
-			else
-				this.CustomMessages.Add(authResult, message);
-
+			this.CustomMessages[authResult] = message;
 
 			return this;
 		}
