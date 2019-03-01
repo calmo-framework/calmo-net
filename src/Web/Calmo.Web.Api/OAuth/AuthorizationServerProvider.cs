@@ -66,14 +66,14 @@ namespace Calmo.Web.Api.OAuth
 
                 if (String.IsNullOrWhiteSpace(username))
                 {
-                    var message = this._config.MessagesConfig.CustomMessages[AuthResult.UserOrPasswordEmpty];
+                    var message = this._config.MessagesConfig.CustomMessages[AuthResult.UserOrPasswordEmpty.ToString()];
                     context.SetError("invalid_grant", message);
                     return;
                 }
 
                 if (!this._config.IsWindowsAuthentication && String.IsNullOrWhiteSpace(password))
                 {
-                    var message = this._config.MessagesConfig.CustomMessages[AuthResult.UserOrPasswordEmpty];
+                    var message = this._config.MessagesConfig.CustomMessages[AuthResult.UserOrPasswordEmpty.ToString()];
                     context.SetError("invalid_grant", message);
                     return;
                 }
@@ -84,7 +84,7 @@ namespace Calmo.Web.Api.OAuth
 
                 if (authResult.In(AuthResult.Unauthorized, AuthResult.UserExpired, AuthResult.PasswordExpired))
                 {
-                    var message = this._config.MessagesConfig.CustomMessages[authResult];
+                    var message = this._config.MessagesConfig.CustomMessages[authResult.ToString()];
                     context.SetError("invalid_grant", message);
                     return;
                 }
