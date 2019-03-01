@@ -5,8 +5,16 @@ using System.IO;
 
 namespace Calmo.Core.Security
 {
+	/// <summary>
+	/// Class with the logic to Create/Validade custom captcha images
+	/// </summary>
     public static class Captcha
     {
+		/// <summary>
+		/// Creates a captcha image inside a Stream
+		/// </summary>
+		/// <param name="text">Text inside the captcha</param>
+		/// <returns>Stream containing an image bitmap</returns>
         public static Stream GetImage(out string text)
         {
             var random = new Random();
@@ -33,7 +41,7 @@ namespace Calmo.Core.Security
             imagemGraphics.FillRectangle(whiteBrush, retangulo);
         }
 
-        private static void DrawText(string texto, Graphics imagemGraphics, Random random)
+        private static void DrawText(string text, Graphics imagemGraphics, Random random)
         {
             var blackBrush = Brushes.DimGray;
             var arial = new Font("arial", 12, FontStyle.Bold);
@@ -42,11 +50,11 @@ namespace Calmo.Core.Security
             var paladino = new Font("Palatino Linotype", 12, FontStyle.Bold);
             var comic = new Font("Comic Sans MS", 12, FontStyle.Bold);
 
-            imagemGraphics.DrawString(texto.Substring(0, 1), arial, blackBrush, 2, random.Next(0, 5));
-            imagemGraphics.DrawString(texto.Substring(1, 1), times, blackBrush, 18, random.Next(0, 5));
-            imagemGraphics.DrawString(texto.Substring(2, 1), verdana, blackBrush, 30, random.Next(0, 5));
-            imagemGraphics.DrawString(texto.Substring(3, 1), paladino, blackBrush, 43, random.Next(0, 5));
-            imagemGraphics.DrawString(texto.Substring(4, 1), comic, blackBrush, 55, random.Next(0, 5));
+            imagemGraphics.DrawString(text.Substring(0, 1), arial, blackBrush, 2, random.Next(0, 5));
+            imagemGraphics.DrawString(text.Substring(1, 1), times, blackBrush, 18, random.Next(0, 5));
+            imagemGraphics.DrawString(text.Substring(2, 1), verdana, blackBrush, 30, random.Next(0, 5));
+            imagemGraphics.DrawString(text.Substring(3, 1), paladino, blackBrush, 43, random.Next(0, 5));
+            imagemGraphics.DrawString(text.Substring(4, 1), comic, blackBrush, 55, random.Next(0, 5));
         }
 
         private static void ImageNoise(Graphics imageGraphics, int intensity, Random random)

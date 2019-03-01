@@ -66,14 +66,14 @@ namespace Calmo.Web.Api.OAuth
 
                 if (String.IsNullOrWhiteSpace(username))
                 {
-                    var message = this._config.MessagesConfig.CustomMessages[AuthResult.UserOrPasswordEmpty];
+                    var message = this._config.MessagesConfig.CustomMessages[BasicAuthResult.UserOrPasswordEmpty.ToString()];
                     context.SetError("invalid_grant", message);
                     return;
                 }
 
                 if (!this._config.IsWindowsAuthentication && String.IsNullOrWhiteSpace(password))
                 {
-                    var message = this._config.MessagesConfig.CustomMessages[AuthResult.UserOrPasswordEmpty];
+                    var message = this._config.MessagesConfig.CustomMessages[BasicAuthResult.UserOrPasswordEmpty.ToString()];
                     context.SetError("invalid_grant", message);
                     return;
                 }
@@ -82,14 +82,21 @@ namespace Calmo.Web.Api.OAuth
                 var authResult = await this._authenticator.Authenticate(authenticationArgs);
                 context = authenticationArgs.Context;
 
-                if (authResult.In(AuthResult.Unauthorized, AuthResult.UserExpired, AuthResult.PasswordExpired))
+                if (authResult.In(BasicAuthResult.Unauthorized.ToString(), BasicAuthResult.UserExpired.ToString(), BasicAuthResult.PasswordExpired.ToString()))
                 {
                     var message = this._config.MessagesConfig.CustomMessages[authResult];
                     context.SetError("invalid_grant", message);
                     return;
                 }
 
-                var identity = new ClaimsIdentity(context.Options.AuthenticationType);
+	            if (authResult != BasicAuthResult.Success.ToString())
+	            {
+		            var message = this._config.MessagesConfig.CustomMessages[authResult];
+		            context.SetError("invalid_grant", message);
+		            return;
+	            }
+
+				var identity = new ClaimsIdentity(context.Options.AuthenticationType);
 
                 if (this._config.TokenDataConfig.Properties != null)
                 {

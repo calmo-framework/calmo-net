@@ -123,6 +123,24 @@ namespace Calmo.Tests.Core
             Assert.IsFalse(validation.Success);
             Assert.AreEqual(1, validation.Count());
         }
+
+		[TestMethod]
+	    public void ValidatingValidChildName()
+	    {
+		    var model = new Model
+		    {
+			    Child = new ChildModel
+			    {
+				    Name = "Name"
+			    }
+		    };
+
+		    var validation = model.Validate()
+			    .Using()
+			    .Rule(p => p.Child, child => !string.IsNullOrEmpty(child.Name));
+
+			Assert.IsTrue(validation.Success);
+	    }
     }
 
     public class Model
@@ -141,5 +159,12 @@ namespace Calmo.Tests.Core
         public string TokenSMS { get; set; }
 
         public string Password { get; set; }
+
+		public ChildModel Child { get; set; }
     }
+
+	public class ChildModel
+	{
+		public string Name { get; set; }
+	}
 }
