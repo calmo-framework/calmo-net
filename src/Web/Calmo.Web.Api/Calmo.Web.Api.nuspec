@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>Calmo.Web.Api</id>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <description>Usefull utility functions for Asp.Net Web API 2 projects.</description>
     <tags>.net utility helpers asp.net api</tags>
     
