@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{2B6BAF75-D4C2-4A25-B51E-9688CAE7D0A8}"
 EndProject
@@ -48,6 +48,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmo.Data.Sharepoint", "Data\Calmo.Data.Sharepoint\Calmo.Data.Sharepoint.csproj", "{DF7F3CD1-CB90-4DA8-A7A0-841AD52F22F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmo.Web.Api", "Web\Calmo.Web.Api\Calmo.Web.Api.csproj", "{F3015D63-6283-4550-9D85-2479EB974BF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmo.Data.SAP", "Data\Calmo.Data.SAP\Calmo.Data.SAP.csproj", "{8DAC3E34-C341-4559-8C04-4335ED1A8C17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -316,6 +318,22 @@ Global
 		{F3015D63-6283-4550-9D85-2479EB974BF7}.Release|x64.Build.0 = Release|Any CPU
 		{F3015D63-6283-4550-9D85-2479EB974BF7}.Release|x86.ActiveCfg = Release|Any CPU
 		{F3015D63-6283-4550-9D85-2479EB974BF7}.Release|x86.Build.0 = Release|Any CPU
+		{8DAC3E34-C341-4559-8C04-4335ED1A8C17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DAC3E34-C341-4559-8C04-4335ED1A8C17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DAC3E34-C341-4559-8C04-4335ED1A8C17}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{8DAC3E34-C341-4559-8C04-4335ED1A8C17}.Debug|ARM.Build.0 = Debug|Any CPU
+		{8DAC3E34-C341-4559-8C04-4335ED1A8C17}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8DAC3E34-C341-4559-8C04-4335ED1A8C17}.Debug|x64.Build.0 = Debug|Any CPU
+		{8DAC3E34-C341-4559-8C04-4335ED1A8C17}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8DAC3E34-C341-4559-8C04-4335ED1A8C17}.Debug|x86.Build.0 = Debug|Any CPU
+		{8DAC3E34-C341-4559-8C04-4335ED1A8C17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DAC3E34-C341-4559-8C04-4335ED1A8C17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DAC3E34-C341-4559-8C04-4335ED1A8C17}.Release|ARM.ActiveCfg = Release|Any CPU
+		{8DAC3E34-C341-4559-8C04-4335ED1A8C17}.Release|ARM.Build.0 = Release|Any CPU
+		{8DAC3E34-C341-4559-8C04-4335ED1A8C17}.Release|x64.ActiveCfg = Release|Any CPU
+		{8DAC3E34-C341-4559-8C04-4335ED1A8C17}.Release|x64.Build.0 = Release|Any CPU
+		{8DAC3E34-C341-4559-8C04-4335ED1A8C17}.Release|x86.ActiveCfg = Release|Any CPU
+		{8DAC3E34-C341-4559-8C04-4335ED1A8C17}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -337,6 +355,7 @@ Global
 		{2AEBA587-2182-44B1-91AA-534E3C3DD415} = {09D136C6-16B5-41FA-8199-20900F357ECD}
 		{DF7F3CD1-CB90-4DA8-A7A0-841AD52F22F3} = {8CE943C8-F86E-4165-9312-54916AA2F29E}
 		{F3015D63-6283-4550-9D85-2479EB974BF7} = {469BEF6B-739C-4FD2-AE8D-3264175AF7FD}
+		{8DAC3E34-C341-4559-8C04-4335ED1A8C17} = {8CE943C8-F86E-4165-9312-54916AA2F29E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9C89F559-C8AA-40D2-AB25-0F124665AA34}
