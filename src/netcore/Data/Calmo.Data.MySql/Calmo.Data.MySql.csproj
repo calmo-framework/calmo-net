@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <PackageId>Calmo.Data.MySql.DotNetCore</PackageId>
+    <Product>Calmo.Data.MySql.DotNetCore</Product>
+    <Company>Calmô! Community</Company>
+    <Authors>Calmô! Community</Authors>
+    <Description>Dapper-based fluent library to simplify MySql data access.</Description>
+    <Copyright>Copyright © Calmô! 2019</Copyright>
+    <PackageLicenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/calmo-framework/calmo-net/</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/calmo-framework/calmo-net/master/art/icon.png</PackageIconUrl>
+    <PackageTags>.net core data dapper utility helpers MySql</PackageTags>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\..\Data\Calmo.Data.MySql\MySqlDbAccessConfigExtensions.cs" Link="MySqlDbAccessConfigExtensions.cs" />
+    <Compile Include="..\..\..\Data\Calmo.Data.MySql\MySqlDbConnectionFactory.cs" Link="MySqlDbConnectionFactory.cs" />
+    <Compile Include="..\..\..\Data\Calmo.Data.MySql\RepositoryDataAccessExtensions.cs" Link="RepositoryDataAccessExtensions.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MySql.Data" Version="8.0.18" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Calmo.Data\Calmo.Data.csproj" />
+  </ItemGroup>
+
+</Project>
