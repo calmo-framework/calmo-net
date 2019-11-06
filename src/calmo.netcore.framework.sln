@@ -1,17 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2042
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{95040411-32E8-4250-AE5B-07AFE14B98C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmo.Core", "netcore\Core\Calmo.Core\Calmo.Core.csproj", "{D066C2EF-48CD-4CE3-8349-D946E0099CF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calmo.Core", "netcore\Core\Calmo.Core\Calmo.Core.csproj", "{D066C2EF-48CD-4CE3-8349-D946E0099CF0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{4CF0DCEA-4B5E-4532-BFD1-E0EA24254AE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmo.Data", "netcore\Data\Calmo.Data\Calmo.Data.csproj", "{0EF94A55-7FE0-44F0-8929-CC77A88404D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calmo.Data", "netcore\Data\Calmo.Data\Calmo.Data.csproj", "{0EF94A55-7FE0-44F0-8929-CC77A88404D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calmo.Data.SQLServer", "netcore\Data\Calmo.Data.SQLServer\Calmo.Data.SQLServer.csproj", "{53690A1A-F366-4409-888C-5F67690D3518}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calmo.Data.SQLServer", "netcore\Data\Calmo.Data.SQLServer\Calmo.Data.SQLServer.csproj", "{53690A1A-F366-4409-888C-5F67690D3518}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calmo.Data.MySql", "netcore\Data\Calmo.Data.MySql\Calmo.Data.MySql.csproj", "{C6BE45F6-CE6D-4077-B8F8-F1ECFCE58E6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{53690A1A-F366-4409-888C-5F67690D3518}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{53690A1A-F366-4409-888C-5F67690D3518}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{53690A1A-F366-4409-888C-5F67690D3518}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6BE45F6-CE6D-4077-B8F8-F1ECFCE58E6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6BE45F6-CE6D-4077-B8F8-F1ECFCE58E6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6BE45F6-CE6D-4077-B8F8-F1ECFCE58E6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6BE45F6-CE6D-4077-B8F8-F1ECFCE58E6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{D066C2EF-48CD-4CE3-8349-D946E0099CF0} = {95040411-32E8-4250-AE5B-07AFE14B98C6}
 		{0EF94A55-7FE0-44F0-8929-CC77A88404D1} = {4CF0DCEA-4B5E-4532-BFD1-E0EA24254AE3}
 		{53690A1A-F366-4409-888C-5F67690D3518} = {4CF0DCEA-4B5E-4532-BFD1-E0EA24254AE3}
+		{C6BE45F6-CE6D-4077-B8F8-F1ECFCE58E6E} = {4CF0DCEA-4B5E-4532-BFD1-E0EA24254AE3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {37BC18A4-8F88-4E07-A0D9-1E6655A7527A}
