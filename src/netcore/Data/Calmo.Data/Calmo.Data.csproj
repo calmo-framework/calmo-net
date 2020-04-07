@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Calmo.Data.DotNetCore</PackageId>
     <Product>Calmo.Data.DotNetCore</Product>
     <Authors>Calmô! Community</Authors>
@@ -10,8 +10,14 @@
     <PackageProjectUrl>https://github.com/calmo-framework/calmo-net/</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/calmo-framework/calmo-net/master/art/icon.png</PackageIconUrl>
     <Description>Dapper-based wrapper to simplify data access.</Description>
-    <PackageTags>.net core data dapper utility helpers</PackageTags>
-    <Version>1.0.2</Version>
+    <PackageTags>.net core standard data dapper utility helpers</PackageTags>
+    <Version>1.0.3</Version>
+    <PackageReleaseNotes>change to .net standard to reach a greater number of projects</PackageReleaseNotes>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>

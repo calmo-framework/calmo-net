@@ -2,19 +2,19 @@
 
 namespace Calmo.Data.Configuration
 {
-#if !NETCOREAPP
+#if !NETSTANDARD
     public class DataSection : ConfigurationSection
 #else
     public class DataSection
 #endif
     {
-#if !NETCOREAPP
+#if !NETSTANDARD
         internal const string SectionName = "core.Settings/data.Settings";
 #else
         internal const string SectionName = "calmoData";
 #endif
 
-#if !NETCOREAPP
+#if !NETSTANDARD
         [ConfigurationProperty("defaultConnectionString", IsRequired = true)]
         public string DefaultConnectionString
         {

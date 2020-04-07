@@ -1,18 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Calmo.Core.DotNetCore</PackageId>
     <Authors>Calmô! Community</Authors>
     <Product>Calmo.Core.DotNetCore</Product>
-    <Description>Core utility functions for .net core projects.</Description>
+    <Description>Core utility functions for .net core and .net standard projects.</Description>
     <Copyright>Copyright © Calmô! 2018</Copyright>
     <PackageLicenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/calmo-framework/calmo-net/</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/calmo-framework/calmo-net/master/art/icon.png</PackageIconUrl>
-    <PackageTags>.net core utility helpers</PackageTags>
+    <PackageTags>.net core standard utility helpers</PackageTags>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
+    <PackageReleaseNotes>change to .net standard to reach a greater number of projects</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -87,6 +88,10 @@
     <Folder Include="Validator\Documents\Brazil\" />
     <Folder Include="Validator\Formats\Brazil\" />
     <Folder Include="Validator\Formats\US\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
   </ItemGroup>
 
 </Project>

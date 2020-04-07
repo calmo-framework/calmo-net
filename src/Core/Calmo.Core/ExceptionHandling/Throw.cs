@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Globalization;
 
-#if !NETCOREAPP && !__MOBILE__
+#if !NETSTANDARD && !__MOBILE__
 using Calmo.Core.Properties;
 #endif
 
-#if !NETCOREAPP && __MOBILE__
+#if !NETSTANDARD && __MOBILE__
 using Calmo.Xamarin.Core;
 #endif
 
@@ -13,7 +13,7 @@ namespace Calmo.Core.ExceptionHandling
 {
     public static class Throw
     {
-#if NETCOREAPP
+#if NETSTANDARD
         private const string ArgumentNullOrEmptyMessage = "O parâmetro {0} não pode ser nulo ou vazio.";
         private const string ExceptionCannotBeNullMessage = "A exceção a ser disparada não pode ser nula.";
         private const string ReferenceNullMessage = "A referência {0} não pode ser nula.";
