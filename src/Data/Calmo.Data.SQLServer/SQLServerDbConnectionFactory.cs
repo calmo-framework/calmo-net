@@ -7,7 +7,7 @@ namespace Calmo.Data.SQLServer
     {
         public IDbConnection GetDbConnection(string currentConnectionString, RepositoryDbAccess dbAccess)
         {
-#if NETCOREAPP
+#if NETSTANDARD
             return new SqlConnection(dbAccess.GetConnectionString(currentConnectionString));
 #else
             return new SqlConnection(dbAccess.GetConnectionString(currentConnectionString, "System.Data.SqlClient", "SQL Server"));

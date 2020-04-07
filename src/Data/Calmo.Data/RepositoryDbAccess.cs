@@ -10,7 +10,7 @@ using Calmo.Core.Threading;
 using Calmo.Data.Configuration;
 using Dapper;
 
-#if NETCOREAPP
+#if NETSTANDARD
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 #else
@@ -34,7 +34,7 @@ namespace Calmo.Data
         private DynamicParameters _outputParameters;
         internal static string ForcedConnectionString;
 
-#if !NETCOREAPP
+#if !NETSTANDARD
         private static readonly DataSection DataSection = CustomConfiguration.Settings.Data();
 #else
         private static DataSection DataSection;
@@ -43,7 +43,7 @@ namespace Calmo.Data
 
         public IDbConnectionFactory DbConnectionFactory { get; set; }
 
-#if NETCOREAPP
+#if NETSTANDARD
         public RepositoryDbAccess()
         {
             var settings = new DataSection();
@@ -52,7 +52,7 @@ namespace Calmo.Data
         }
 #endif
 
-#if !NETCOREAPP
+#if !NETSTANDARD
         public string GetConnectionString(string name, string providerTypeName, string providerName)
         {
             var connectionStringData = ConfigurationManager.ConnectionStrings[name];

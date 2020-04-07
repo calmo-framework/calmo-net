@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>Calmo.Data.SQLServer.DotNetCore</PackageId>
     <Product>Calmo.Data.SQLServer.DotNetCore</Product>
     <Company>Calmô! Community</Company>
@@ -11,7 +11,10 @@
     <PackageLicenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/calmo-framework/calmo-net/</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/calmo-framework/calmo-net/master/art/icon.png</PackageIconUrl>
-    <PackageTags>.net core data dapper utility helpers SQL Server</PackageTags>
+    <PackageTags>.net core standard data dapper utility helpers SQL Server</PackageTags>
+    <Version>1.0.1</Version>
+    <PackageReleaseNotes>change to .net standard to reach a greater number of projects</PackageReleaseNotes>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
