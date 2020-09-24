@@ -38,7 +38,7 @@ namespace Calmo.Data
         private static readonly DataSection DataSection = CustomConfiguration.Settings.Data();
 #else
         private static DataSection DataSection;
-        internal static IConfiguration Configuration;
+        public static IConfiguration Configuration;
 #endif
 
         public IDbConnectionFactory DbConnectionFactory { get; set; }
