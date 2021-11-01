@@ -1,18 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <PackageId>Calmo.Data.DotNetCore</PackageId>
     <Product>Calmo.Data.DotNetCore</Product>
     <Authors>Calmô! Community</Authors>
-    <Copyright>Copyright © Calmô! 2018</Copyright>
+    <Copyright>Copyright © Calmô! 2021</Copyright>
     <PackageLicenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/calmo-framework/calmo-net/</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/calmo-framework/calmo-net/master/art/icon.png</PackageIconUrl>
     <Description>Dapper-based wrapper to simplify data access.</Description>
     <PackageTags>.net core standard data dapper utility helpers</PackageTags>
-    <Version>1.0.4</Version>
-    <PackageReleaseNotes>minor bug fixes</PackageReleaseNotes>
+    <Version>1.0.5</Version>
+    <PackageReleaseNotes>Upgrade .net standard to 2.1 version</PackageReleaseNotes>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <AssemblyVersion>1.0.4.0</AssemblyVersion>
     <FileVersion>1.0.4.0</FileVersion>
@@ -20,6 +20,10 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
 
   <ItemGroup>

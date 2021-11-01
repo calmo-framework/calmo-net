@@ -1,19 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <PackageId>Calmo.Data.ActiveDirectory.DotNetCore</PackageId>
     <Product>Calmo.Data.ActiveDirectory.DotNetCore</Product>
     <Company>Calmô! Community</Company>
     <Authors>Calmô! Community</Authors>
     <Description>Dapper-based fluent library to simplify Active Directory data access.</Description>
-    <Copyright>Copyright © Calmô! 2018</Copyright>
+    <Copyright>Copyright © Calmô! 2021</Copyright>
     <PackageLicenseUrl>https://github.com/calmo-framework/calmo-net/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/calmo-framework/calmo-net/</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/calmo-framework/calmo-net/master/art/icon.png</PackageIconUrl>
     <PackageTags>.net core standard data dapper utility helpers active directory</PackageTags>
-    <Version>1.0.0</Version>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <Version>1.0.1</Version>
+    <PackageReleaseNotes>Upgrade .net standard to 2.1 version</PackageReleaseNotes>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </PropertyGroup>

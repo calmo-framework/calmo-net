@@ -21,6 +21,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Calmo.Core\Calmo.Core.csproj" />
     <ProjectReference Include="..\..\Data\Calmo.Data.ActiveDirectory\Calmo.Data.ActiveDirectory.csproj" />
+    <ProjectReference Include="..\..\Data\Calmo.Data.MySql\Calmo.Data.MySql.csproj" />
+    <ProjectReference Include="..\..\Data\Calmo.Data.PostgreSql\Calmo.Data.PostgreSql.csproj" />
     <ProjectReference Include="..\..\Data\Calmo.Data\Calmo.Data.csproj" />
   </ItemGroup>
 
